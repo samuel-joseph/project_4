@@ -23,3 +23,7 @@ This is a pokemon battle and trading game where user will be a pokemon trainer. 
 MVP:
   - Adding of pokeball with the pokemon inside it to the user's database is a must.
   - Interacting with other user via trading and battling is gonna be my highest MVP. 
+
+  CLIENT:
+  https://wireframe.cc/BIk5oU
+  The login page.
