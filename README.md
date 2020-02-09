@@ -26,3 +26,7 @@ MVP:
 
   CLIENT:
   ![Logo](./image_readme/Homepage.png)
+  - This is the login page, register page would look similar for this one too.
+
+  ![Logo](./image_readme/trade.png)
+  - This is the trading of 2 trainers will look like once logged in. If user is not logged in he can still see other users pokemon that are ready to be traded but he can not participate to it.
