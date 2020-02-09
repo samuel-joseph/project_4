@@ -25,5 +25,4 @@ MVP:
   - Interacting with other user via trading and battling is gonna be my highest MVP. 
 
   CLIENT:
-  https://wireframe.cc/BIk5oU
-  The login page.
+  ![Logo](./image_readme/Homepage.png)
