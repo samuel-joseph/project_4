@@ -37,3 +37,12 @@ MVP:
   ![Logo](./image_readme/stuffs.png)
   - Pokemon center is one of the navigation that would heal all users pokemon, view pokemon where in it will be an option to put user/trainer pokemon into either trading or battle and finally item shop to buy pokeballs and potions.
 
+SERVER:
+ERD
+![Logo](./image_readme/ERD.png)
+
+API
+ - https://pokeapi.co/api/v2/pokemon/
+ - https://pokeapi.co/api/v2/berry/
+ - https://pokeapi.co/api/v2/move/
+  
