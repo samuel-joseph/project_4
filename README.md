@@ -39,7 +39,7 @@ MVP:
 
 SERVER:
   ERD
-![Logo](./image_readme/ERD.png)
+![Logo](./image_readme/ERD1.png)
 
   API
  - https://pokeapi.co/api/v2/pokemon/
