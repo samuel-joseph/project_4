@@ -30,6 +30,10 @@ MVP:
 
   ![Logo](./image_readme/trade.png)
   - This is the trading of 2 trainers will look like once logged in. If user is not logged in he can still see other users pokemon that are ready to be traded but he can not participate to it.
+
   ![Logo](./image_readme/battle.png)
   - This is the battle system in the game. UI with user vs user is also the same as user vs npc but in NPC there is an option to throw a pokeball.
+
+  ![Logo](./image_readme/battle.png)
+  - Pokemon center is one of the navigation that would heal all users pokemon, view pokemon where in it will be an option to put user/trainer pokemon into either trading or battle and finally item shop to buy pokeballs and potions.
 
