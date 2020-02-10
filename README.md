@@ -34,6 +34,6 @@ MVP:
   ![Logo](./image_readme/battle.png)
   - This is the battle system in the game. UI with user vs user is also the same as user vs npc but in NPC there is an option to throw a pokeball.
 
-  ![Logo](./image_readme/battle.png)
+  ![Logo](./image_readme/stuffs.png)
   - Pokemon center is one of the navigation that would heal all users pokemon, view pokemon where in it will be an option to put user/trainer pokemon into either trading or battle and finally item shop to buy pokeballs and potions.
 
