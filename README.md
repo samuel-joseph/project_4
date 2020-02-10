@@ -1,8 +1,8 @@
-Pokemon
+                                                      POKEMON BATTLE ROYALE
 
 Overview:
 
-This is a pokemon battle and trading game where user will be a pokemon trainer. At the very start of the game the user is asked to login if he already have an account if not he is asked to register. While not logged in, the user can freely view trainers that wants to trade their pokemon with other trainers pokemon. When logged in the user becomes a pokemon trainer, he has the access to view his pokemons, battle or capture a pokemon, access to a pokemon center and trainer can send his beloved pokemon to a trading block where he can swap it with other players pokemon.
+This is a pokemon battle and trading game where user will experience the joy of being a pokemon trainer. At the very start of the game the user is asked to login if he already have an account if not he is asked to register. While not logged in, the user can freely view trainers that wants to trade or battle with their pokemon with other trainers pokemon. When logged in the user becomes a pokemon trainer, he has the access to view his pokemons, battle or capture a pokemon, access to a pokemon center and trainer can send his beloved pokemon to a trading block where he can swap it with other players pokemon or battle block if he wants to battle with other trainer.
 
     Features:
     - Trading ones pokemon to other logged in user/trainer.
@@ -35,14 +35,23 @@ MVP:
   - This is the battle system in the game. UI with user vs user is also the same as user vs npc but in NPC there is an option to throw a pokeball.
 
   ![Logo](./image_readme/stuffs.png)
-  - Pokemon center is one of the navigation that would heal all users pokemon, view pokemon where in it will be an option to put user/trainer pokemon into either trading or battle and finally item shop to buy pokeballs and potions.
+  - Pokemon center is one of the three navigations. It is a healthcare for pokemons where it would heal all pokemon of the user. View Pokemon will display all of user's pokemon, in it will also let you place your pokemon into trade block or battle block. Finally item shop to buy pokeballs and berries.
 
 SERVER:
-ERD
+  ERD
 ![Logo](./image_readme/ERD.png)
 
-API
+  API
  - https://pokeapi.co/api/v2/pokemon/
  - https://pokeapi.co/api/v2/berry/
  - https://pokeapi.co/api/v2/move/
+
+  Dependencies
+  - Front-end: React.js
+    - Styling: CSS and Flexbox.
+  - Back-end: Rails and postman.
+  - Code Editor: vscode.
+
+POST-MVP
+  - Apply great animation to the pokemon attacks. Also make a ranking system based on number of wins per trainer. And add an experience system which will eventually evolve a pokemon once requirements are met. Make a new nav where trainers can just bond with their pokemon by throwing items.
   
