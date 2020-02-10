@@ -51,6 +51,7 @@ SERVER:
     - Styling: CSS and Flexbox.
   - Back-end: Rails and postman.
   - Code Editor: vscode.
+  - Web Browser: Google Chrome.
 
 POST-MVP
   - Apply great animation to the pokemon attacks. Also make a ranking system based on number of wins per trainer. And add an experience system which will eventually evolve a pokemon once requirements are met. Make a new nav where trainers can just bond with their pokemon by throwing items.
