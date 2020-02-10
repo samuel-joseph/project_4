@@ -1,4 +1,4 @@
-                                                      POKEMON BATTLE ROYALE
+                                         POKEMON BATTLE ROYALE
 
 Overview:
 
