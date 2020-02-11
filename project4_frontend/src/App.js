@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Router } from 'react-router-dom';
+import styles from './App.css';
+
+import Main from './components/main.js'
 
 
-function App() {
-  return (
-    <div className="App">
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-    </div>
-  );
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <Main />
+      </div>
+    );
+  }
 }
 
 export default App;
