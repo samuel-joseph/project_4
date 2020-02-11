@@ -9,7 +9,7 @@ export const loginUser = async (loginData) => {
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
   localStorage.setItem('authToken', resp.data.auth_token)
   localStorage.setItem('name', resp.data.user.name)
-  localStorage.setItem('email', resp.data.user.trainername)
+  localStorage.setItem('trainername', resp.data.user.trainername)
   return resp.data.user;
 }
 
@@ -20,11 +20,11 @@ export const registerUser = async (registerData) => {
     api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
     localStorage.setItem('authToken', resp.data.auth_token)
     localStorage.setItem('name', resp.data.user.name)
-    localStorage.setItem('email', resp.data.user.trainername)
+    localStorage.setItem('trainername', resp.data.user.trainername)
     return resp.data.user;
   } catch (e) {
     if (e.response.status === 422) {
-      return {errorMessage: "Email is already associated with a user, please login to"}
+      return {errorMessage: "Trainername is already associated with a user, please login to"}
     }
   }
 }
@@ -36,19 +36,19 @@ export const verifyUser = () => {
   }
 }
 
-export const indexTodos = async () => {
-  const resp = await api.get('/todos');
+export const indexPokemon = async () => {
+  const resp = await api.get('/Pokemon');
   return resp.data;
 }
 
 
-export const postTodo = async (postData) => {
-  const resp = await api.post('/todos', postData)
+export const postPokemon = async (postData) => {
+  const resp = await api.post('/Pokemon', postData)
   return resp.data
 }
 
  
-export const putTodo = async (id, postData) => {
-  const resp = await api.put(`/todos/${id}`, postData);
+export const putPokemon = async (id, postData) => {
+  const resp = await api.put(`/Pokemon/${id}`, postData);
   return resp.data
 }
