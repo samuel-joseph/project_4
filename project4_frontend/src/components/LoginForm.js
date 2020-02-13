@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../services/api_helper';
+// import { loginUser } from '../services/api_helper';
 
 export default class LoginForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
+      trainername: '',
       password: ''
     }
   }
@@ -24,11 +24,11 @@ export default class LoginForm extends Component {
       <div>
         <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
           <h2>Login!</h2>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="trainername">Trainername</label>
           <input
             type="text"
-            name="email"
-            value={this.state.email}
+            name="trainername"
+            value={this.state.trainername}
             onChange={this.handleChange}
           />
           <label htmlFor="password">Password</label>

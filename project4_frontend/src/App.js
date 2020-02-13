@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import styles from './App.css';
 import Main from './components/main.js';
 
-import { registerUser, verifyUser, loginUser } from './services/api_helper';
+import { registerUser, verifyUser, loginUser, indexPokemon } from './services/api_helper';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 
@@ -14,10 +14,11 @@ class App extends Component {
 
     this.state = {
       name: "",
-      email: "",
+      trainername: "",
       password: "",
       currentUser: null,
-      errorText: ""
+      errorText: "",
+      pokemon: ""
     }
   }
 
@@ -35,8 +36,14 @@ class App extends Component {
 
   handleLogin = async (e, loginData) => {
     e.preventDefault();
+    console.log(this.state.loginData)
     const currentUser = await loginUser(loginData);
+    const pokemon = await indexPokemon();
+    console.log(pokemon)
     this.setState({ currentUser });
+    this.setState({ pokemon })
+
+    console.log(this.state.pokemon)
     this.props.history.push("/pokemons");
   }
 
@@ -53,14 +60,19 @@ class App extends Component {
   componentDidMount() {
     verifyUser();
     if (localStorage.getItem('authToken')) {
-      const name = localStorage.getItem('name')
-      const email = localStorage.getItem('trainername')
-      const user = { name, email };
+      // const name = localStorage.getItem('name')
+      const trainername = localStorage.getItem('trainername')
+      const pokemon = localStorage.getItem('pokemon')
+      const user = { trainername };
       user && this.setState({
-        currentUser: user
+        currentUser: user,
+        pokemon
       })
+      console.log(this.state.pokemon)
     }
   }
+
+
 
 
   render() {
@@ -68,7 +80,8 @@ class App extends Component {
       <div className="App">
         {this.state.currentUser ?
           <div>
-            <h1>Hello {this.state.currentUser.name}</h1>
+            <h1>Hello {this.state.currentUser.trainername}</h1>
+
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
           :
@@ -97,4 +110,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

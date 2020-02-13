@@ -6,27 +6,24 @@ const api = axios.create({
 
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', loginData);
-  api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
+  console.log(resp)
   localStorage.setItem('authToken', resp.data.auth_token)
-  localStorage.setItem('name', resp.data.user.name)
-  localStorage.setItem('trainername', resp.data.user.trainername)
+  api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
+  console.log(resp.data.trainername)
+  localStorage.setItem('name', resp.data.name)
+  localStorage.setItem('trainername', resp.data.trainername)
   return resp.data.user;
 }
 
 
 export const registerUser = async (registerData) => {
-  try {
-    const resp = await api.post('/signup', registerData);
-    api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
-    localStorage.setItem('authToken', resp.data.auth_token)
-    localStorage.setItem('name', resp.data.user.name)
-    localStorage.setItem('trainername', resp.data.user.trainername)
-    return resp.data.user;
-  } catch (e) {
-    if (e.response.status === 422) {
-      return {errorMessage: "Trainername is already associated with a user, please login to"}
-    }
-  }
+  const resp = await api.post('/signup', registerData);
+  console.log(resp)
+  api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`
+  localStorage.setItem('authToken', resp.data.auth_token)
+  localStorage.setItem('name', resp.data.user.name)
+  localStorage.setItem('trainername', resp.data.user.trainername)
+  return resp.data.user;
 }
 
 export const verifyUser = () => {
@@ -37,7 +34,9 @@ export const verifyUser = () => {
 }
 
 export const indexPokemon = async () => {
-  const resp = await api.get('/Pokemon');
+  console.log("hey")
+  const resp = await api.get('/pokemons');
+  console.log(resp)
   return resp.data;
 }
 
@@ -47,7 +46,7 @@ export const postPokemon = async (postData) => {
   return resp.data
 }
 
- 
+
 export const putPokemon = async (id, postData) => {
   const resp = await api.put(`/Pokemon/${id}`, postData);
   return resp.data
