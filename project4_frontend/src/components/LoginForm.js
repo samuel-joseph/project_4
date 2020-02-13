@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 // import { loginUser } from '../services/api_helper';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      trainername: '',
-      password: ''
-    }
+      trainername: "",
+      password: ""
+    };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div>
-        <form onSubmit={(e) => this.props.handleLogin(e, this.state)}>
+        <form onSubmit={e => this.props.handleLogin(e, this.state)}>
           <h2>Login!</h2>
           <label htmlFor="trainername">Trainername</label>
           <input
@@ -42,6 +42,8 @@ export default class LoginForm extends Component {
           <Link to="/register">Register</Link>
         </form>
       </div>
-    )
+    );
   }
 }
+
+export default withRouter(LoginForm);
