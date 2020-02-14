@@ -7,7 +7,7 @@ import {
   registerUser,
   verifyUser,
   loginUser,
-  indexPokemon
+  pokedex
 } from "./services/api_helper";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
@@ -43,7 +43,7 @@ class App extends Component {
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
     console.log(this.state.pokemon);
-    this.props.history.push("/pokemons");
+    this.props.history.push("/pokedex");
   };
 
   handleLogout = () => {
@@ -56,12 +56,12 @@ class App extends Component {
   };
 
   loadPokemon = async () => {
-    const pokemon = await indexPokemon()
+    const pokemon = await pokedex();
     // pokemon.push(await indexPokemon());
     this.setState({
       pokemon
-    })
-  }
+    });
+  };
 
   componentDidMount() {
     verifyUser();
