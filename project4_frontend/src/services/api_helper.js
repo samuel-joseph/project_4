@@ -37,8 +37,8 @@ export const getallPokemon = async () => {
   return resp.data;
 };
 
-export const postPokemon = async postData => {
-  const resp = await api.post("/Pokemon", postData);
+export const storePokemon = async postData => {
+  const resp = await api.post("/newuser", postData);
   return resp.data;
 };
 

@@ -13,6 +13,7 @@ class Main extends Component {
   verifyUser = () => {
     if (this.state.ownPokemon) {
     } else {
+      console.log("going to new user")
       this.props.history.push("/newuser");
     }
   };

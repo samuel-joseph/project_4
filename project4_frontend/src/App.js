@@ -42,7 +42,7 @@ class App extends Component {
     e.preventDefault();
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
-    // this.props.history.push("/pokedex");
+    this.props.history.push("/main");
   };
 
   handleLogout = () => {
@@ -84,6 +84,7 @@ class App extends Component {
         {this.state.currentUser ? (
           <div>
             <h1>Hello {this.state.currentUser.trainername}</h1>
+            <Main />
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
         ) : (
