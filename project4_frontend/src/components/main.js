@@ -1,44 +1,36 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Route } from "react-router-dom";
+import NewUser from './NewUser';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemon: [],
-      ownPokemon: []
+      ownPokemon: null
     };
   }
 
+  verifyUser = () => {
+    if (this.state.ownPokemon) {
+    } else {
+      this.props.history.push("/newuser");
+    }
+  };
+
   componentDidMount() {
-    let pokemon = this.props.pokedex;
-    this.setState({
-      pokemon
-    });
-    console.log(this.props.pokedex);
-    // console.log(this.state.pokemon);
+    this.verifyUser();
   }
 
-  onClick = (chosen) => {
-    this.setState({ ownPokemon: [...this.state.ownPokemon, chosen] })
-    console.log(this.state.ownPokemon)
-  }
+  onClick = chosen => {
+    this.setState({ ownPokemon: [...this.state.ownPokemon, chosen] });
+    console.log(this.state.ownPokemon);
+  };
 
   render() {
     console.log(this.state.pokemon);
     return (
       <div className="main">
-        <h2>MAIN</h2>
-        {this.state.pokemon && (
-          <>
-            {this.state.pokemon.map(data => (
-              <button onClick={()=>this.onClick(data)}>
-                <h4>{data.name}</h4>
-                <img src={data.frontimage} />
-              </button>
-            ))}
-          </>
-        )}
+      <Route path="/newuser" render={() => <NewUser />} />
       </div>
     );
   }

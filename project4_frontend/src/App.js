@@ -7,10 +7,11 @@ import {
   registerUser,
   verifyUser,
   loginUser,
-  pokedex
+  getallPokemon
 } from "./services/api_helper";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import Pokedex from "./components/Pokedex";
 
 class App extends Component {
   constructor(props) {
@@ -39,11 +40,9 @@ class App extends Component {
 
   handleLogin = async (e, loginData) => {
     e.preventDefault();
-    console.log(this.state.loginData);
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
-    console.log(this.state.pokemon);
-    this.props.history.push("/pokedex");
+    // this.props.history.push("/pokedex");
   };
 
   handleLogout = () => {
@@ -56,7 +55,7 @@ class App extends Component {
   };
 
   loadPokemon = async () => {
-    const pokemon = await pokedex();
+    const pokemon = await getallPokemon();
     // pokemon.push(await indexPokemon());
     this.setState({
       pokemon
@@ -85,10 +84,6 @@ class App extends Component {
         {this.state.currentUser ? (
           <div>
             <h1>Hello {this.state.currentUser.trainername}</h1>
-            {console.log(this.state.pokemon)}
-
-            {/* <div>{this.state.pokemon.map(data => <div>{data.data.name}</div>)}</div> */}
-
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
         ) : (
@@ -99,12 +94,12 @@ class App extends Component {
             <Link to="/login">
               <button>Login</button>
             </Link>
+            <Link to="/pokedex">
+              <button>Pokedex</button>
+            </Link>
           </nav>
         )}
-        <Route
-          path="/pokemons"
-          render={() => <Main pokedex={this.state.pokemon} />}
-        ></Route>
+        <Route path="/pokedex" render={() => <Pokedex />} />
         <Route
           path="/login"
           render={() => <LoginForm handleLogin={this.handleLogin} />}
