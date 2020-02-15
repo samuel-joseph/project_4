@@ -23,7 +23,8 @@ class App extends Component {
       password: "",
       currentUser: null,
       errorText: "",
-      pokemon: null
+      pokemon: null,
+      id: ""
     };
   }
 
@@ -41,7 +42,8 @@ class App extends Component {
   handleLogin = async (e, loginData) => {
     e.preventDefault();
     const currentUser = await loginUser(loginData);
-    this.setState({ currentUser });
+    const id = currentUser.id;
+    this.setState({ currentUser, id });
     this.props.history.push("/main");
     console.log(this.state.currentUser);
   };
@@ -53,29 +55,28 @@ class App extends Component {
     localStorage.removeItem("authToken");
     localStorage.removeItem("name");
     localStorage.removeItem("trainername");
+    localStorage.removeItem("id");
   };
 
-  loadPokemon = async () => {
-    const pokemon = await getallPokemon();
-    // pokemon.push(await indexPokemon());
-    this.setState({
-      pokemon
-    });
-  };
+  // loadPokemon = async () => {
+  //   const pokemon = await getallPokemon();
+  //   // pokemon.push(await indexPokemon());
+  //   this.setState({
+  //     pokemon
+  //   });
+  // };
 
   componentDidMount() {
     verifyUser();
-    this.loadPokemon();
+    console.log(this.state.currentUser);
+    // this.loadPokemon();
     if (localStorage.getItem("authToken")) {
-      // const name = localStorage.getItem('name')
       const trainername = localStorage.getItem("trainername");
-      // const pokemon = localStorage.getItem('pokemon')
       const user = { trainername };
       user &&
         this.setState({
           currentUser: user
         });
-      console.log(this.state.pokemon);
     }
   }
 
@@ -85,7 +86,9 @@ class App extends Component {
         {this.state.currentUser ? (
           <div>
             <h1>Hello {this.state.currentUser.trainername}</h1>
-            <Main id={this.state.currentUser.id} />
+            <Route path="/main" render={() => <Main />} />
+            {console.log(this.state.id)}
+            <Main id={this.state.id} />
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
         ) : (

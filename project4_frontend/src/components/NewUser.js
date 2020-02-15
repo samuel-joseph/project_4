@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
 import { storePokemon } from "../services/api_helper";
+import { Link } from "react-router-dom";
 
 class NewUser extends Component {
   constructor(props) {
@@ -67,6 +68,9 @@ class NewUser extends Component {
                   </p>
                 ))}
               </div>
+              <Link to="/main">
+                <button>OK</button>
+              </Link>
             </>
           )}
         </div>

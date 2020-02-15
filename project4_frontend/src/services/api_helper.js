@@ -20,6 +20,7 @@ export const registerUser = async registerData => {
   localStorage.setItem("authToken", resp.data.auth_token);
   localStorage.setItem("name", resp.data.user.name);
   localStorage.setItem("trainername", resp.data.user.trainername);
+  localStorage.setItem("id", resp.data.user.id);
   return resp.data.user;
 };
 
@@ -53,6 +54,7 @@ export const storePokemon = async postData => {
 };
 
 export const getPokemon = async id => {
+  console.log(id);
   const resp = await api.get(`/pokemons/${id}`);
   return resp.data;
 };

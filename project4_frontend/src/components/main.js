@@ -13,14 +13,14 @@ class Main extends Component {
   }
 
   verifyUser = async () => {
-    let response = await getPokemon(this.state.id);
-    console.log(response)
+    console.log(this.props.id);
+    let response = await getPokemon(this.props.id);
+    console.log(response);
     if (this.state.ownPokemon) {
       console.log("WORKING!!!");
       this.setState({ ownPokemon: response });
       this.props.history.push("/main");
     } else {
-      console.log("going to new user");
       this.props.history.push("/newuser");
     }
   };
@@ -38,13 +38,12 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        {console.log(this.state.ownPokemon)}
+        {this.props.id}
         <Route path="/newuser" render={() => <NewUser />} />
         {this.state.ownPokemon && (
           <div>
             <h3>{this.state.ownPokemon[0].name}</h3>
-            <img src={this.state.ownPokemon[0].frontimage}
-            />
+            <img src={this.state.ownPokemon[0].frontimage} />
             <p>{this.state}</p>
           </div>
         )}
