@@ -20,7 +20,7 @@ class NewUser extends Component {
 
   storeData = async chosenPokemon => {
     const response = await storePokemon(chosenPokemon);
-    console.log(this.state.pokemon);
+    console.log(this.state.pokemon.moves[0]);
   };
 
   randomFunc(random) {
@@ -39,7 +39,6 @@ class NewUser extends Component {
     }
 
     this.setState({ options: newPokemon });
-    console.log(this.state.options);
   };
 
   render() {
@@ -61,11 +60,13 @@ class NewUser extends Component {
               {console.log(this.state.pokemon)}
               <p>{this.state.pokemon.name}</p>
               <img src={this.state.pokemon.frontimage} />
-              <p>
+              <div>
                 {this.state.pokemon.moves.map(move => (
-                  <>{move}</>
+                  <p>
+                    {move.name}:{move.power}
+                  </p>
                 ))}
-              </p>
+              </div>
             </>
           )}
         </div>
