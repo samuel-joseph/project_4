@@ -10,6 +10,8 @@ export const loginUser = async loginData => {
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`;
   localStorage.setItem("name", resp.data.name);
   localStorage.setItem("trainername", resp.data.trainername);
+  console.log(resp);
+  localStorage.setItem("id", resp.data.user.id);
   return resp.data.user;
 };
 
@@ -44,6 +46,7 @@ export const options = async () => {
 
 export const storePokemon = async postData => {
   const resp = [];
+  console.log(postData);
   let pokemon = await api.post("/newuser", postData);
   console.log(postData.moves);
   let moves = null;
@@ -56,6 +59,7 @@ export const storePokemon = async postData => {
 export const getPokemon = async id => {
   console.log(id);
   const resp = await api.get(`/pokemons/${id}`);
+  console.log(resp);
   return resp.data;
 };
 

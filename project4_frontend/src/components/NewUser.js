@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
 import { storePokemon } from "../services/api_helper";
-import { Link } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 class NewUser extends Component {
   constructor(props) {

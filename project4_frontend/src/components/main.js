@@ -12,9 +12,14 @@ class Main extends Component {
     };
   }
 
+  init(ownPokemon) {
+    this.setState({ ownPokemon });
+  }
+
   verifyUser = async () => {
-    console.log(this.props.id);
-    let response = await getPokemon(this.props.id);
+    console.log(localStorage.getItem("id"));
+    let response = await getPokemon(localStorage.getItem("id"));
+    this.init(response);
     console.log(response);
     if (this.state.ownPokemon) {
       console.log("WORKING!!!");
@@ -41,11 +46,26 @@ class Main extends Component {
         {this.props.id}
         <Route path="/newuser" render={() => <NewUser />} />
         {this.state.ownPokemon && (
-          <div>
-            <h3>{this.state.ownPokemon[0].name}</h3>
-            <img src={this.state.ownPokemon[0].frontimage} />
-            <p>{this.state}</p>
-          </div>
+          <>
+            {this.state.ownPokemon.map(poke => (
+              <div>
+                <h3>{poke.name}</h3>
+                <img src={poke.frontimage} />
+                {/* <div>
+                  {poke.moves.map(move => (
+                    <p>
+                      {move.name}:{move.power}
+                    </p>
+                  ))}
+                </div> */}
+              </div>
+            ))}
+          </>
+          // <div>
+          //   <h3>{this.state.ownPokemon[0].name}</h3>
+          //   <img src={this.state.ownPokemon[0].frontimage} />
+          //   <p>{this.state}</p>
+          // </div>
         )}
       </div>
     );
