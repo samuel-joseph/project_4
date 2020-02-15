@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Pokedex from "./Pokedex";
-import { getallPokemon } from "../services/api_helper";
+import { options } from "../services/api_helper";
 import { storePokemon } from "../services/api_helper";
 
 class NewUser extends Component {
@@ -20,7 +20,7 @@ class NewUser extends Component {
 
   storeData = async chosenPokemon => {
     const response = await storePokemon(chosenPokemon);
-    console.log(response);
+    console.log(this.state.pokemon);
   };
 
   randomFunc(random) {
@@ -30,7 +30,7 @@ class NewUser extends Component {
 
   componentDidMount = async () => {
     console.log(this.state.pokemon);
-    let response = await getallPokemon();
+    let response = await options();
     let newPokemon = [];
     for (let i = 0; i < 3; i++) {
       {
@@ -61,6 +61,11 @@ class NewUser extends Component {
               {console.log(this.state.pokemon)}
               <p>{this.state.pokemon.name}</p>
               <img src={this.state.pokemon.frontimage} />
+              <p>
+                {this.state.pokemon.moves.map(move => (
+                  <>{move}</>
+                ))}
+              </p>
             </>
           )}
         </div>

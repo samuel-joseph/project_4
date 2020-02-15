@@ -1,24 +1,32 @@
 import React, { Component } from "react";
 import { withRouter, Route } from "react-router-dom";
-import NewUser from './NewUser';
+import NewUser from "./NewUser";
+import { getPokemon } from "../services/api_helper";
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ownPokemon: null
+      ownPokemon: null,
+      id: ""
     };
   }
 
-  verifyUser = () => {
+  verifyUser = async () => {
+    let response = await getPokemon(this.state.id);
+    console.log(response)
     if (this.state.ownPokemon) {
+      console.log("WORKING!!!");
+      this.setState({ ownPokemon: response });
+      this.props.history.push("/main");
     } else {
-      console.log("going to new user")
+      console.log("going to new user");
       this.props.history.push("/newuser");
     }
   };
 
   componentDidMount() {
+    this.setState({ id: this.props.id });
     this.verifyUser();
   }
 
@@ -28,10 +36,18 @@ class Main extends Component {
   };
 
   render() {
-    console.log(this.state.pokemon);
     return (
       <div className="main">
-      <Route path="/newuser" render={() => <NewUser />} />
+        {console.log(this.state.ownPokemon)}
+        <Route path="/newuser" render={() => <NewUser />} />
+        {this.state.ownPokemon && (
+          <div>
+            <h3>{this.state.ownPokemon[0].name}</h3>
+            <img src={this.state.ownPokemon[0].frontimage}
+            />
+            <p>{this.state}</p>
+          </div>
+        )}
       </div>
     );
   }

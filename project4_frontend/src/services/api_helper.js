@@ -31,14 +31,29 @@ export const verifyUser = () => {
 };
 
 export const getallPokemon = async () => {
-  console.log("hey");
   const resp = await api.get("/pokedex");
   console.log(resp);
   return resp.data;
 };
 
+export const options = async () => {
+  const resp = await api.get("/pokemons");
+  return resp.data;
+};
+
 export const storePokemon = async postData => {
-  const resp = await api.post("/newuser", postData);
+  const resp = [];
+  let pokemon = await api.post("/newuser", postData);
+  console.log(postData.moves);
+  let moves = null;
+  for (let i = 0; i < postData.moves.length; i++) {
+    console.log(postData.moves[i]);
+    moves = await api.post("/newuser/moves", postData.moves[i]);
+  }
+};
+
+export const getPokemon = async id => {
+  const resp = await api.get(`/pokemons/${id}`);
   return resp.data;
 };
 

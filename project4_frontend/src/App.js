@@ -43,6 +43,7 @@ class App extends Component {
     const currentUser = await loginUser(loginData);
     this.setState({ currentUser });
     this.props.history.push("/main");
+    console.log(this.state.currentUser);
   };
 
   handleLogout = () => {
@@ -84,7 +85,7 @@ class App extends Component {
         {this.state.currentUser ? (
           <div>
             <h1>Hello {this.state.currentUser.trainername}</h1>
-            <Main />
+            <Main id={this.state.currentUser.id} />
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
         ) : (
