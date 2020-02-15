@@ -17,7 +17,7 @@ export const loginUser = async loginData => {
 
 export const registerUser = async registerData => {
   const resp = await api.post("/signup", registerData);
-  console.log(resp)
+  console.log(resp);
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`;
   localStorage.setItem("authToken", resp.data.auth_token);
   localStorage.setItem("name", resp.data.user.name);
@@ -41,12 +41,12 @@ export const getallPokemon = async () => {
 
 export const options = async () => {
   const resp = await api.get("/pokemons");
+  console.log(resp);
   return resp.data;
 };
 
 export const storePokemon = async postData => {
-  const resp = [];
-  console.log(postData);
+   const resp = [];
   let pokemon = await api.post("/newuser", postData);
   console.log(postData.moves);
   let moves = null;

@@ -33,7 +33,7 @@ class App extends Component {
     const currentUser = await registerUser(registerData);
     if (!currentUser.errorMessage) {
       this.setState({ currentUser });
-      this.props.history.push("/trainername");
+      // this.props.history.push("/trainername");
     } else {
       this.setState({ errorText: currentUser.errorMessage });
     }

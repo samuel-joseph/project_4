@@ -7,7 +7,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ownPokemon: null,
+      ownPokemon: [],
       id: ""
     };
   }
@@ -21,7 +21,7 @@ class Main extends Component {
     let response = await getPokemon(localStorage.getItem("id"));
     this.init(response);
     console.log(response);
-    if (this.state.ownPokemon) {
+    if (this.state.ownPokemon.length > 0) {
       console.log("WORKING!!!");
       this.setState({ ownPokemon: response });
       this.props.history.push("/main");
@@ -43,7 +43,7 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        {this.props.id}
+        {console.log(this.state.ownPokemon)}
         <Route path="/newuser" render={() => <NewUser />} />
         {this.state.ownPokemon && (
           <>

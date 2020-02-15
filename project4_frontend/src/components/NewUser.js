@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
 import { storePokemon } from "../services/api_helper";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class NewUser extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class NewUser extends Component {
         newPokemon.push(this.randomFunc(response));
       }
     }
-
+    console.log(newPokemon);
     this.setState({ options: newPokemon });
   };
 
@@ -49,10 +49,12 @@ class NewUser extends Component {
           {!this.state.pokemon && (
             <div>
               {this.state.options.map(pokemon => (
-                <img
-                  onClick={() => this.storePokemon(pokemon)}
-                  src="https://i7.pngguru.com/preview/575/483/741/pokemon-ranger-pokemon-omega-ruby-and-alpha-sapphire-poke-ball-sprite-sprite.jpg"
-                />
+                <>
+                  <img
+                    onClick={() => this.storePokemon(pokemon)}
+                    src="https://i7.pngguru.com/preview/575/483/741/pokemon-ranger-pokemon-omega-ruby-and-alpha-sapphire-poke-ball-sprite-sprite.jpg"
+                  />
+                </>
               ))}
             </div>
           )}

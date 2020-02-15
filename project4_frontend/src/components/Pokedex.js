@@ -21,6 +21,7 @@ class Pokedex extends Component {
     return (
       <div>
         <h2>POKEDEX</h2>
+        {console.log(this.state.pokemon)}
         {this.state.pokemon && (
           <>
             {this.state.pokemon.map(data => (
