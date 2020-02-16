@@ -31,12 +31,11 @@ class App extends Component {
   handleRegister = async (e, registerData) => {
     e.preventDefault();
     const currentUser = await registerUser(registerData);
-    if (!currentUser.errorMessage) {
-      this.setState({ currentUser });
-      this.props.history.push("/main");
-    } else {
-      this.setState({ errorText: currentUser.errorMessage });
-    }
+    console.log(`This is the currentUser ${currentUser}`);
+    const id = currentUser.id;
+    console.log(`This is the id ${id}`);
+    this.setState({ currentUser, id });
+    this.props.history.push("/main");
   };
 
   handleLogin = async (e, loginData) => {
@@ -44,7 +43,6 @@ class App extends Component {
     const currentUser = await loginUser(loginData);
     const id = currentUser.id;
     this.setState({ currentUser, id });
-    this.props.history.push("/main");
     console.log(this.state.currentUser);
   };
 
@@ -101,25 +99,22 @@ class App extends Component {
             <Link to="/pokedex">
               <button>Pokedex</button>
             </Link>
+            <Route path="/pokedex" render={() => <Pokedex />} />
+            <Route
+              path="/login"
+              render={() => <LoginForm handleLogin={this.handleLogin} />}
+            />
+            <Route
+              path="/register"
+              render={() => (
+                <RegisterForm
+                  handleRegister={this.handleRegister}
+                  errorText={this.state.errorText}
+                />
+              )}
+            />
           </nav>
         )}
-        <Route path="/pokedex" render={() => <Pokedex />} />
-        <Route
-          path="/login"
-          render={() => <LoginForm handleLogin={this.handleLogin} />}
-        />
-        <Route
-          path="/register"
-          render={() => (
-            <RegisterForm
-              handleRegister={this.handleRegister}
-              errorText={this.state.errorText}
-            />
-          )}
-        />
-        {/* <Route path="/pokemons" render={() => (
-          // <TodoContainer />
-        )} /> */}
       </div>
     );
   }

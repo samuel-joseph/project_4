@@ -10,8 +10,8 @@ export const loginUser = async loginData => {
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`;
   localStorage.setItem("name", resp.data.name);
   localStorage.setItem("trainername", resp.data.trainername);
-  console.log(resp);
   localStorage.setItem("id", resp.data.user.id);
+  console.log(resp.data.user.id);
   return resp.data.user;
 };
 
@@ -23,6 +23,7 @@ export const registerUser = async registerData => {
   localStorage.setItem("name", resp.data.user.name);
   localStorage.setItem("trainername", resp.data.user.trainername);
   localStorage.setItem("id", resp.data.user.id);
+  console.log(resp.data.user);
   return resp.data.user;
 };
 

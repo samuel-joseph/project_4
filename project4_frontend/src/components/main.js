@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { withRouter, Route } from "react-router-dom";
+import { Link, withRouter, Route } from "react-router-dom";
 import NewUser from "./NewUser";
 import { getPokemon, getMoves } from "../services/api_helper";
+import ShowPokemon from "./ShowPokemon";
+import Pokedex from "./Pokedex";
 
 class Main extends Component {
   constructor(props) {
@@ -12,42 +14,36 @@ class Main extends Component {
     };
   }
 
-  init(ownPokemon) {
-    console.log(ownPokemon);
-    this.setState({ ownPokemon });
-  }
-
-  verifyUser = async () => {
+  componentDidMount = async () => {
+    this.setState({ id: this.props.id });
     console.log(localStorage.getItem("id"));
-    let response = await getPokemon(localStorage.getItem("id"));
-    this.init(response);
-    console.log(this.state.ownPokemon[0].name);
-    if (this.state.ownPokemon) {
-      console.log("WORKING!!!");
-      // this.setState({ ownPokemon: response });
-      // this.props.history.push("/main");
+    let ownPokemon = await getPokemon(localStorage.getItem("id"));
+    this.setState({ ownPokemon });
+    if (ownPokemon.length !== 0 && ownPokemon) {
+      this.props.history.push("/profile");
     } else {
       this.props.history.push("/newuser");
     }
   };
 
-  componentDidMount() {
-    this.setState({ id: this.props.id });
-    this.verifyUser();
-  }
-
-  onClick = chosen => {
-    this.setState({ ownPokemon: [...this.state.ownPokemon, chosen] });
-    console.log(this.state.ownPokemon);
-  };
-
   render() {
     return (
       <div className="main">
-        <Route path="/newuser" render={() => <NewUser />} />
-        {this.state.ownPokemon && (
-          <ShowPokemon Pokemon={this.state.ownPokemon} />
-        )}
+        <nav>
+          <Link to="/pokedex">POKEDEX</Link>
+          <Link to="/profile">PROFILE</Link>
+        </nav>
+        <main>
+          <Route path="/pokedex" render={() => <Pokedex />} />
+          <Route path="/newuser" render={() => <NewUser />} />
+          <Route
+            path="/profile"
+            render={() => <ShowPokemon Pokemon={this.state.ownPokemon} />}
+          />
+          {/* {this.state.ownPokemon && (
+            <ShowPokemon Pokemon={this.state.ownPokemon} />
+          )} */}
+        </main>
       </div>
     );
   }

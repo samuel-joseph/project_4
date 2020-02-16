@@ -12,8 +12,8 @@ class NewUser extends Component {
       pokemon: null,
       options: [],
       moves: {
-        name: '',
-        power: ''
+        name: "",
+        power: ""
       }
     };
   }
@@ -25,7 +25,6 @@ class NewUser extends Component {
 
   storeData = async chosenPokemon => {
     const response = await storePoke(chosenPokemon);
-    console.log(this.state.pokemon.moves[0]);
   };
 
   randomFunc(random) {
@@ -42,7 +41,6 @@ class NewUser extends Component {
         newPokemon.push(this.randomFunc(response));
       }
     }
-    console.log(newPokemon);
     this.setState({ options: newPokemon });
   };
 
