@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Route } from "react-router-dom";
 import NewUser from "./NewUser";
-import { getPokemon } from "../services/api_helper";
+import { getPokemon, getMoves } from "../services/api_helper";
 
 class Main extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class Main extends Component {
   }
 
   init(ownPokemon) {
+    console.log(ownPokemon);
     this.setState({ ownPokemon });
   }
 
@@ -20,7 +21,7 @@ class Main extends Component {
     console.log(localStorage.getItem("id"));
     let response = await getPokemon(localStorage.getItem("id"));
     this.init(response);
-    console.log(response);
+    console.log(this.state.ownPokemon);
     if (this.state.ownPokemon.length > 0) {
       console.log("WORKING!!!");
       this.setState({ ownPokemon: response });
@@ -39,6 +40,12 @@ class Main extends Component {
     this.setState({ ownPokemon: [...this.state.ownPokemon, chosen] });
     console.log(this.state.ownPokemon);
   };
+
+  // test = async () => {
+  //   console.log(this.state.ownPokemon[0].created_by);
+  //   let test = await getMoves(this.state.ownPokemon[0].crea);
+  //   console.log(test);
+  // };
 
   render() {
     return (
@@ -67,6 +74,8 @@ class Main extends Component {
           //   <p>{this.state}</p>
           // </div>
         )}
+
+        {/* <button onClick={() => this.test()}>MOVES</button> */}
       </div>
     );
   }

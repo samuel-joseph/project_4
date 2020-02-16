@@ -40,21 +40,35 @@ export const getallPokemon = async () => {
 };
 
 export const options = async () => {
-  const resp = await api.get("/pokemons");
+  const resp = await api.get("/pokedex");
   console.log(resp);
   return resp.data;
 };
 
-export const storePokemon = async postData => {
-   const resp = [];
-  let pokemon = await api.post("/newuser", postData);
-  console.log(postData.moves);
+export const storePoke = async postData => {
+  const resp = [];
+  console.log(postData);
+  let pokemon = await api.post("/pokemons", postData);
+  // console.log(postData.moves[0]);
+  console.log(pokemon);
+  console.log(pokemon.data.id);
   let moves = null;
   for (let i = 0; i < postData.moves.length; i++) {
     console.log(postData.moves[i]);
-    moves = await api.post("/newuser/moves", postData.moves[i]);
+    let moves = await api.post(
+      `/pokemons/${pokemon.data.id}/moves`,
+      postData.moves[i]
+    );
   }
+  console.log(pokemon);
 };
+
+// export const getMoves = async id => {
+//   console.log(id);
+//   const resp = await api.get(`/pokemons/29/moves`);
+//   console.log(resp);
+//   return resp.data;
+// };
 
 export const getPokemon = async id => {
   console.log(id);

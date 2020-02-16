@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
-import { storePokemon } from "../services/api_helper";
+import { storePoke } from "../services/api_helper";
 import { Link } from "react-router-dom";
 
 class NewUser extends Component {
@@ -10,7 +10,11 @@ class NewUser extends Component {
 
     this.state = {
       pokemon: null,
-      options: []
+      options: [],
+      moves: {
+        name: '',
+        power: ''
+      }
     };
   }
 
@@ -20,7 +24,7 @@ class NewUser extends Component {
   }
 
   storeData = async chosenPokemon => {
-    const response = await storePokemon(chosenPokemon);
+    const response = await storePoke(chosenPokemon);
     console.log(this.state.pokemon.moves[0]);
   };
 

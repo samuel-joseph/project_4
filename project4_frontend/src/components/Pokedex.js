@@ -15,6 +15,7 @@ class Pokedex extends Component {
   componentDidMount = async () => {
     const pokemon = await getallPokemon();
     this.setState({ pokemon });
+    console.log(this.state.pokemon);
   };
 
   render() {
