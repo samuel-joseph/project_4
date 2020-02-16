@@ -33,7 +33,7 @@ class App extends Component {
     const currentUser = await registerUser(registerData);
     if (!currentUser.errorMessage) {
       this.setState({ currentUser });
-      // this.props.history.push("/trainername");
+      this.props.history.push("/main");
     } else {
       this.setState({ errorText: currentUser.errorMessage });
     }
@@ -87,7 +87,6 @@ class App extends Component {
           <div>
             <h1>Hello {this.state.currentUser.trainername}</h1>
             <Route path="/main" render={() => <Main />} />
-            {console.log(this.state.id)}
             <Main id={this.state.id} />
             <button onClick={this.handleLogout}>Logout!!!</button>
           </div>
