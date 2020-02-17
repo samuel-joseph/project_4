@@ -19,9 +19,31 @@ class Battle extends Component {
   }
 
   battle = async () => {
-    let npcHealth = this.state.npc.health;
-    let userHealth = this.state.user.health;
+    let npcHealth = this.state.npc.current_health;
+    let randomNpcAttack = this.randomFunc(this.state.npc.moves);
+    let npcAttack = randomNpcAttack.power;
+
+    let userHealth = this.state.user.current_health;
+    let randomUserAttack = this.randomFunc(this.state.npc.moves);
+    let userAttack = randomUserAttack.power;
+
+    console.log(npcHealth);
+    npcHealth = npcHealth - userAttack;
+    userHealth = userHealth - npcAttack;
+    console.log(npcHealth);
+
+    this.setState(prevState => ({
+      npc: { ...prevState.npc, current_health: npcHealth },
+      user: { ...prevState.user, current_health: userHealth }
+    }));
   };
+
+  // this.setState(prevState => ({
+  //   formData: {
+  //     ...prevState.formData,
+  //     [name]: value
+  //   }
+  // }))
 
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
@@ -40,6 +62,7 @@ class Battle extends Component {
   render() {
     return (
       <div className="battle">
+        {console.log(this.state)}
         <div className="npc">
           {this.state.npc && (
             <div>
