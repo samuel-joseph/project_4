@@ -7,7 +7,7 @@ import {
   registerUser,
   verifyUser,
   loginUser,
-  getallPokemon
+  updateName
 } from "./services/api_helper";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
@@ -57,11 +57,11 @@ class App extends Component {
     localStorage.removeItem("id");
   };
 
-  changeGreetings = (req) => {
+  changeGreetings = req => {
     // console.log("hey")
-  //  this.setState({greetings:req})
-  }
-  
+    //  this.setState({greetings:req})
+  };
+
   componentDidMount() {
     verifyUser();
     console.log(this.state.currentUser);
@@ -89,7 +89,7 @@ class App extends Component {
                 </div>
                 <div className="box2">
                   <div className="box2a">
-                    <h1> 
+                    <h1>
                       {this.state.greetings}{" "}
                       {this.state.currentUser.trainername}
                     </h1>

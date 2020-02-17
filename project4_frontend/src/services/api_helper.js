@@ -61,6 +61,7 @@ export const storePoke = async postData => {
     );
   }
   console.log(pokemon);
+  return pokemon.data.id;
 };
 
 // export const getMoves = async id => {
@@ -77,7 +78,10 @@ export const getPokemon = async id => {
   return resp.data;
 };
 
-export const putPokemon = async (id, postData) => {
-  const resp = await api.put(`/Pokemon/${id}`, postData);
+export const updateName = async (id, postData) => {
+  console.log(id);
+  console.log(postData);
+  const resp = await api.put(`/pokemons/${id}`, postData);
+  console.log(resp);
   return resp.data;
 };

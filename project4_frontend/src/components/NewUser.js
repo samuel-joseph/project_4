@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
-import { storePoke } from "../services/api_helper";
+import { storePoke, updateName } from "../services/api_helper";
 import { Link } from "react-router-dom";
 
 class NewUser extends Component {
@@ -11,6 +11,11 @@ class NewUser extends Component {
     this.state = {
       pokemon: null,
       options: [],
+      id: "",
+      formData: {
+        name: ""
+      },
+      value: "",
       moves: {
         name: "",
         power: ""
@@ -24,13 +29,21 @@ class NewUser extends Component {
   }
 
   storeData = async chosenPokemon => {
-    const response = await storePoke(chosenPokemon);
+    const id = await storePoke(chosenPokemon);
+    this.setState({ id });
   };
 
   randomFunc(random) {
     let response = random[Math.floor(Math.random() * random.length)];
     return response;
   }
+
+  handleSubmit = async event => {
+    event.preventDefault();
+    let name = this.state.formData;
+    let id = this.state.id;
+    let resp = await updateName(id, name);
+  };
 
   componentDidMount = async () => {
     console.log(this.state.pokemon);
@@ -42,6 +55,18 @@ class NewUser extends Component {
       }
     }
     this.setState({ options: newPokemon });
+  };
+
+  handleChange = event => {
+    let value = event.target.value;
+    console.log(value);
+    let name = event.target.name;
+    this.setState(prevState => ({
+      formData: {
+        ...prevState.formData,
+        [name]: value
+      }
+    }));
   };
 
   render() {
@@ -63,8 +88,17 @@ class NewUser extends Component {
           {this.state.pokemon && (
             <>
               {console.log(this.state.pokemon)}
-              <p>{this.state.pokemon.name}</p>
               <img src={this.state.pokemon.frontimage} />
+              <form onSubmit={this.handleSubmit}>
+                <h5>Name of your Pokemon</h5>
+                <input
+                  onChange={this.handleChange}
+                  name="name"
+                  type="text"
+                  placeholder="name"
+                />
+                <input type="submit" />
+              </form>
               <div>
                 {this.state.pokemon.moves.map(move => (
                   <p>
