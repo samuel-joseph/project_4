@@ -18,6 +18,11 @@ class Battle extends Component {
     return response;
   }
 
+  battle = async () => {
+    let npcHealth = this.state.npc.health;
+    let userHealth = this.state.user.health;
+  }
+
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
     let resp1 = await getPokemon(localStorage.getItem("id"));
