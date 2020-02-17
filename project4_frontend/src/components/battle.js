@@ -24,10 +24,10 @@ class Battle extends Component {
     let npcAttack = randomNpcAttack.power;
 
     let userHealth = this.state.user.current_health;
-    let randomUserAttack = this.randomFunc(this.state.npc.moves);
+    let randomUserAttack = this.randomFunc(this.state.user.moves);
     let userAttack = randomUserAttack.power;
 
-    console.log(npcHealth);
+    console.log(randomUserAttack.name);
     npcHealth = npcHealth - userAttack;
     userHealth = userHealth - npcAttack;
     console.log(npcHealth);
