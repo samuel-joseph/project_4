@@ -24,12 +24,15 @@ class NewUser extends Component {
   }
 
   storePokemon(chosenPokemon) {
+    console.log(chosenPokemon);
     this.setState({ pokemon: chosenPokemon });
     this.storeData(chosenPokemon);
+    console.log(this.state.pokemon);
   }
 
   storeData = async chosenPokemon => {
     const id = await storePoke(chosenPokemon);
+    console.log(id);
     this.setState({ id });
   };
 
@@ -47,13 +50,14 @@ class NewUser extends Component {
   };
 
   componentDidMount = async () => {
-    console.log("AM I HERE")
+    console.log("AM I HERE");
     console.log(this.state.pokemon);
     let response = await options();
     let newPokemon = [];
     for (let i = 0; i < 3; i++) {
       {
         newPokemon.push(this.randomFunc(response));
+        console.log(newPokemon);
       }
     }
     this.setState({ options: newPokemon });
@@ -77,7 +81,7 @@ class NewUser extends Component {
         <div>
           {!this.state.pokemon && (
             <div>
-              {console.log("HELLO")}
+              {console.log(this.state.options)}
               {this.state.options.map(pokemon => (
                 <>
                   <img

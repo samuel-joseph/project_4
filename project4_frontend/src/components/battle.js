@@ -21,11 +21,12 @@ class Battle extends Component {
   battle = async () => {
     let npcHealth = this.state.npc.health;
     let userHealth = this.state.user.health;
-  }
+  };
 
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
     let resp1 = await getPokemon(localStorage.getItem("id"));
+    console.log(resp1);
     let npc = this.randomFunc(resp);
     this.props.display("BATTLE");
     console.log("NPC");
@@ -45,7 +46,7 @@ class Battle extends Component {
               <div className="players">
                 <div>
                   <h3>{this.state.npc.name}</h3>
-                  <h4>HP: {this.state.npc.health}</h4>
+                  <h4>HP: {this.state.npc.current_health}</h4>
                 </div>
                 <img src={this.state.npc.frontimage} />
               </div>
@@ -59,13 +60,15 @@ class Battle extends Component {
                 <img src={this.state.user.backimage} />
                 <div>
                   <h3>{this.state.user.name}</h3>
-                  <h4>HP: {this.state.user.health}</h4>
+                  <h4>HP: {this.state.user.current_health}</h4>
                 </div>
               </div>
             </div>
           )}
           <div className="fightButton">
-            <button onClick={()=>this.battle()} className="fight">FIGHT</button>
+            <button onClick={() => this.battle()} className="fight">
+              FIGHT
+            </button>
           </div>
         </div>
       </div>

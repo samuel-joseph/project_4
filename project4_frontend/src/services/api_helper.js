@@ -60,7 +60,8 @@ export const storePoke = async postData => {
       postData.moves[i]
     );
   }
-  console.log(pokemon);
+  console.log("HEYOOOOO");
+  console.log(pokemon.data);
   return pokemon.data.id;
 };
 
