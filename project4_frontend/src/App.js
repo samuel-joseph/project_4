@@ -89,7 +89,7 @@ class App extends Component {
                 </div>
                 <div className="box2">
                   <div className="box2a">
-                    <h1>
+                    <h1> 
                       {this.state.greetings}{" "}
                       {this.state.currentUser.trainername}
                     </h1>
@@ -101,7 +101,7 @@ class App extends Component {
                     <button>
                       <Link to="/profile">PROFILE</Link>
                     </button>
-                    <button onClick={this.handleLogout}>Logout!!!</button>
+                    <button onClick={this.handleLogout}>LOGOUT</button>
                   </div>
                 </div>
               </div>
