@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
 import { storePoke, updateName } from "../services/api_helper";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class NewUser extends Component {
   constructor(props) {
@@ -43,6 +43,7 @@ class NewUser extends Component {
     let name = this.state.formData;
     let id = this.state.id;
     let resp = await updateName(id, name);
+    this.props.history.push("/main");
   };
 
   componentDidMount = async () => {
@@ -87,7 +88,6 @@ class NewUser extends Component {
           )}
           {this.state.pokemon && (
             <>
-              {console.log(this.state.pokemon)}
               <img src={this.state.pokemon.frontimage} />
               <form onSubmit={this.handleSubmit}>
                 <h5>Name of your Pokemon</h5>
@@ -114,4 +114,4 @@ class NewUser extends Component {
   }
 }
 
-export default NewUser;
+export default withRouter(NewUser);

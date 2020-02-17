@@ -12,6 +12,7 @@ import {
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Pokedex from "./components/Pokedex";
+import Welcome from "./components/welcome";
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class App extends Component {
     localStorage.removeItem("name");
     localStorage.removeItem("trainername");
     localStorage.removeItem("id");
+    this.props.history.push("/welcome");
   };
 
   // changeGreetings(greetings) {
@@ -89,6 +91,7 @@ class App extends Component {
                     id={this.state.id}
                     greetings={() => this.changeGreetings()}
                   />
+                  <Route path="/welcome" render={() => <Welcome />} />
                 </div>
                 <div className="box2">
                   <div className="box2a">
@@ -114,8 +117,8 @@ class App extends Component {
               </div>
             ) : (
               <div className="box">
-                  <div className="box1">
-                    
+                <div className="box1">
+                  <Welcome />
                   <Route
                     path="/pokedex"
                     render={() => (
@@ -126,7 +129,7 @@ class App extends Component {
                     path="/login"
                     render={() => (
                       <LoginForm
-                        greetings={this.changeGreetings()}
+                        // greetings={this.changeGreetings()}
                         handleLogin={this.handleLogin}
                       />
                     )}
@@ -135,7 +138,7 @@ class App extends Component {
                     path="/register"
                     render={() => (
                       <RegisterForm
-                        greetings={this.changeGreetings()}
+                        // greetings={this.changeGreetings()}
                         handleRegister={this.handleRegister}
                         errorText={this.state.errorText}
                       />
