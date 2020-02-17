@@ -18,6 +18,7 @@ class Pokedex extends Component {
     const pokemon = await getallPokemon();
     this.setState({ pokemon });
     console.log(this.state.pokemon);
+    // this.props.greetings("Pokedex");
   };
 
   render() {

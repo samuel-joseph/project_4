@@ -14,6 +14,10 @@ class Main extends Component {
     };
   }
 
+  greetings = greet => {
+    this.props.greetings(greet);
+  };
+
   componentDidMount = async () => {
     this.setState({ id: this.props.id });
     console.log(localStorage.getItem("id"));
@@ -26,23 +30,27 @@ class Main extends Component {
     }
   };
 
-  
-
   render() {
     return (
       <div className="main">
         <main>
-          <Route path="/pokedex" render={() => <Pokedex />} />
-          <Route path="/newuser" render={() => <NewUser />} />
+          <Route
+            path="/pokedex"
+            render={() => <Pokedex greetings={() => this.greetings()} />}
+          />
+          <Route
+            path="/newuser"
+            render={() => <NewUser greetings={() => this.greetings()} />}
+          />
           <Route
             path="/profile"
-            render={() => <ShowPokemon
-              Pokemon={this.state.ownPokemon}
-            />}
+            render={() => (
+              <ShowPokemon
+                greetings={() => this.greetings()}
+                Pokemon={this.state.ownPokemon}
+              />
+            )}
           />
-          {/* {this.state.ownPokemon && (
-            <ShowPokemon Pokemon={this.state.ownPokemon} />
-          )} */}
         </main>
       </div>
     );

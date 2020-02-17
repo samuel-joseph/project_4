@@ -57,10 +57,10 @@ class App extends Component {
     localStorage.removeItem("id");
   };
 
-  changeGreetings = req => {
-    // console.log("hey")
-    //  this.setState({greetings:req})
-  };
+  // changeGreetings(greetings) {
+  //   console.log(greetings);
+  //   this.setState({ greetings });
+  // }
 
   componentDidMount() {
     verifyUser();
@@ -84,16 +84,19 @@ class App extends Component {
             {this.state.currentUser ? (
               <div className="box">
                 <div className="box1">
-                  <Route path="/main" render={() =>
-                    <Main />} />
-                  <Main id={this.state.id} greetings={this.changeGreetings()} />
+                  <Route path="/main" render={() => <Main />} />
+                  <Main
+                    id={this.state.id}
+                    greetings={() => this.changeGreetings()}
+                  />
                 </div>
                 <div className="box2">
                   <div className="box2a">
-                    <h1>
-                      {this.state.greetings}{" "}
-                      {this.state.currentUser.trainername}
-                    </h1>
+                    <h3>
+                      {this.state.greetings}
+                      {/* {this.state.greetings}{" "}
+                      {this.state.currentUser.trainername} */}
+                    </h3>
                   </div>
                   <div className="box2b">
                     <button>
@@ -101,6 +104,9 @@ class App extends Component {
                     </button>
                     <button>
                       <Link to="/profile">PROFILE</Link>
+                    </button>
+                    <button>
+                      <Link to="/battle">BATTLE</Link>
                     </button>
                     <button onClick={this.handleLogout}>LOGOUT</button>
                   </div>
