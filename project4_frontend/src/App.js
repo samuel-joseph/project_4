@@ -114,7 +114,8 @@ class App extends Component {
               </div>
             ) : (
               <div className="box">
-                <div className="box1">
+                  <div className="box1">
+                    
                   <Route
                     path="/pokedex"
                     render={() => (
