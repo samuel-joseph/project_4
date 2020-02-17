@@ -108,3 +108,8 @@ button {
   flex-direction: row;
   justify-content: center;
 }
+
+.battle {
+  display: flex;
+  flex-direction: column;
+}

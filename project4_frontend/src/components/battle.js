@@ -32,7 +32,7 @@ class Battle extends Component {
 
   render() {
     return (
-      <div>
+      <div className="battle">
         <div>
           {this.state.npc && (
             <div>
