@@ -4,6 +4,7 @@ import NewUser from "./NewUser";
 import { getPokemon, getMoves } from "../services/api_helper";
 import ShowPokemon from "./ShowPokemon";
 import Pokedex from "./Pokedex";
+import Battle from "./battle";
 
 class Main extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class Main extends Component {
   };
 
   componentDidMount = async () => {
+    console.log("CHECK!!!!");
     this.setState({ id: this.props.id });
     console.log(localStorage.getItem("id"));
     let ownPokemon = await getPokemon(localStorage.getItem("id"));
@@ -36,21 +38,30 @@ class Main extends Component {
         <main>
           <Route
             path="/pokedex"
-            render={() => <Pokedex greetings={() => this.greetings()} />}
+            render={() => (
+              <Pokedex
+              // greetings={() => this.greetings()}
+              />
+            )}
           />
           <Route
             path="/newuser"
-            render={() => <NewUser greetings={() => this.greetings()} />}
+            render={() => (
+              <NewUser
+              // greetings={() => this.greetings()}
+              />
+            )}
           />
           <Route
             path="/profile"
             render={() => (
               <ShowPokemon
-                greetings={() => this.greetings()}
+                // greetings={() => this.greetings()}
                 Pokemon={this.state.ownPokemon}
               />
             )}
           />
+          <Route path="/battle" render={() => <Battle />} />
         </main>
       </div>
     );

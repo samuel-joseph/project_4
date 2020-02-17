@@ -47,6 +47,7 @@ class NewUser extends Component {
   };
 
   componentDidMount = async () => {
+    console.log("AM I HERE")
     console.log(this.state.pokemon);
     let response = await options();
     let newPokemon = [];
@@ -76,6 +77,7 @@ class NewUser extends Component {
         <div>
           {!this.state.pokemon && (
             <div>
+              {console.log("HELLO")}
               {this.state.options.map(pokemon => (
                 <>
                   <img

@@ -89,9 +89,9 @@ class App extends Component {
                   <Route path="/main" render={() => <Main />} />
                   <Main
                     id={this.state.id}
-                    greetings={() => this.changeGreetings()}
+                    // greetings={() => this.changeGreetings()}
                   />
-                  <Route path="/welcome" render={() => <Welcome />} />
+                  
                 </div>
                 <div className="box2">
                   <div className="box2a">
@@ -122,7 +122,9 @@ class App extends Component {
                   <Route
                     path="/pokedex"
                     render={() => (
-                      <Pokedex greetings={this.changeGreetings()} />
+                      <Pokedex
+                        // greetings={this.changeGreetings()}
+                      />
                     )}
                   />
                   <Route
