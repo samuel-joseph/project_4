@@ -4,23 +4,25 @@ export default function ShowPokemon(props) {
   return (
     <div>
       {props.Pokemon && (
-        <div>
+        <div className="pokemon">
           {props.Pokemon.map(pokemon => (
-            <div>
-              <div>
-                <h2>{pokemon.name}</h2>
-                <img src={pokemon.frontimage} />
-                <h4>LV: {pokemon.level}</h4>
-                <h4>HP: {pokemon.health}</h4>
+            <>
+              <h1>{pokemon.name}</h1>
+              <div className="pokemonContainer">
+                <div className="pokemonDetails">
+                  <img src={pokemon.frontimage} />
+                  <h4>LV: {pokemon.level}</h4>
+                  <h4>HP: {pokemon.health}</h4>
+                </div>
+                <div className="pokemonMoves">
+                  {pokemon.moves.map(move => (
+                    <h4>
+                      {move.name}:{move.power}
+                    </h4>
+                  ))}
+                </div>
               </div>
-              <div>
-                {pokemon.moves.map(move => (
-                  <h4>
-                    {move.name}:{move.power}
-                  </h4>
-                ))}
-              </div>
-            </div>
+            </>
           ))}
         </div>
       )}

@@ -102,3 +102,9 @@ button {
   background-color: rgba(0, 0, 0, 0);
   color: black;
 }
+
+.pokemonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
