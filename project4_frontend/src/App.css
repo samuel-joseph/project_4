@@ -101,6 +101,7 @@ button {
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0);
   color: black;
+  cursor: pointer;
 }
 
 .pokemonContainer {
@@ -124,5 +125,19 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+.greetings {
+  text-align: center;
+}
+
+.fightButton {
+  display: flex;
+  justify-content: center;
+}
+
+.fight {
+  border: 2px solid black;
+  background-color: white;
 }

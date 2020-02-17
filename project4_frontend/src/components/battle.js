@@ -37,9 +37,11 @@ class Battle extends Component {
         <div className="npc">
           {this.state.npc && (
             <div>
-              <h3>{this.state.npc.name}</h3>
               <div className="players">
-                <h4>HP: {this.state.npc.health}</h4>
+                <div>
+                  <h3>{this.state.npc.name}</h3>
+                  <h4>HP: {this.state.npc.health}</h4>
+                </div>
                 <img src={this.state.npc.frontimage} />
               </div>
             </div>
@@ -48,13 +50,18 @@ class Battle extends Component {
         <div className="user">
           {this.state.user && (
             <div>
-              <h3>{this.state.user.name}</h3>
               <div className="players">
                 <img src={this.state.user.backimage} />
-                <h4>HP: {this.state.user.health}</h4>
+                <div>
+                  <h3>{this.state.user.name}</h3>
+                  <h4>HP: {this.state.user.health}</h4>
+                </div>
               </div>
             </div>
           )}
+          <div className="fightButton">
+            <button onClick={()=>this.battle()} className="fight">FIGHT</button>
+          </div>
         </div>
       </div>
     );

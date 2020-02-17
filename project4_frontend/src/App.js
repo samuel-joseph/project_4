@@ -102,11 +102,11 @@ class App extends Component {
                 </div>
                 <div className="box2">
                   <div className="box2a">
-                    <h3>
+                    <h5 className="greetings">
                       {this.state.greetings}
                       {/* {this.state.greetings}{" "}
                       {this.state.currentUser.trainername} */}
-                    </h3>
+                    </h5>
                   </div>
                   <div className="box2b">
                     <button>
