@@ -22,6 +22,7 @@ class Battle extends Component {
     let resp = await getallPokemon(1);
     let resp1 = await getPokemon(localStorage.getItem("id"));
     let npc = this.randomFunc(resp);
+    this.props.display("BATTLE");
     console.log("NPC");
     console.log(npc);
     let user = resp1[0];
@@ -33,22 +34,22 @@ class Battle extends Component {
   render() {
     return (
       <div className="battle">
-        <div>
+        <div className="npc">
           {this.state.npc && (
             <div>
               <h3>{this.state.npc.name}</h3>
-              <div>
-                <img src={this.state.npc.frontimage} />
+              <div className="players">
                 <h4>HP: {this.state.npc.health}</h4>
+                <img src={this.state.npc.frontimage} />
               </div>
             </div>
           )}
         </div>
-        <div>
+        <div className="user">
           {this.state.user && (
             <div>
               <h3>{this.state.user.name}</h3>
-              <div>
+              <div className="players">
                 <img src={this.state.user.backimage} />
                 <h4>HP: {this.state.user.health}</h4>
               </div>

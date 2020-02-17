@@ -13,6 +13,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import Pokedex from "./components/Pokedex";
 import Welcome from "./components/welcome";
+import Battle from "./components/battle";
 
 class App extends Component {
   constructor(props) {
@@ -59,13 +60,14 @@ class App extends Component {
     this.props.history.push("/welcome");
   };
 
-  // changeGreetings(greetings) {
-  //   console.log(greetings);
-  //   this.setState({ greetings });
-  // }
+  changeGreetings(greetings) {
+    console.log(greetings);
+    this.setState({ greetings });
+  }
 
   componentDidMount() {
     verifyUser();
+    this.changeGreetings("WHAT IS UP!!");
     console.log(this.state.currentUser);
     // this.loadPokemon();
     if (localStorage.getItem("authToken")) {
@@ -87,11 +89,16 @@ class App extends Component {
               <div className="box">
                 <div className="box1">
                   <Route path="/main" render={() => <Main />} />
+                  <Route
+                    path="/battle"
+                    render={() => (
+                      <Battle display={(e) => this.changeGreetings(e)} />
+                    )}
+                  />
                   <Main
                     id={this.state.id}
                     // greetings={() => this.changeGreetings()}
                   />
-                  
                 </div>
                 <div className="box2">
                   <div className="box2a">
@@ -123,7 +130,7 @@ class App extends Component {
                     path="/pokedex"
                     render={() => (
                       <Pokedex
-                        // greetings={this.changeGreetings()}
+                      // greetings={this.changeGreetings()}
                       />
                     )}
                   />

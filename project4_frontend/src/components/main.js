@@ -61,7 +61,7 @@ class Main extends Component {
               />
             )}
           />
-          <Route path="/battle" render={() => <Battle />} />
+          
         </main>
       </div>
     );
