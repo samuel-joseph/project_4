@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route, withRouter } from "react-router-dom";
-import { getallPokemon } from "../services/api_helper";
+import { getallPokemon, getPokemon } from "../services/api_helper";
 
 class Battle extends Component {
   constructor(props) {
@@ -20,12 +20,43 @@ class Battle extends Component {
 
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
-    let npc = this.randomFunc(resp)
-    console.log(npc)
+    let resp1 = await getPokemon(localStorage.getItem("id"));
+    let npc = this.randomFunc(resp);
+    console.log("NPC");
+    console.log(npc);
+    let user = resp1[0];
+    console.log("USER");
+    console.log(user);
+    this.setState({ npc, user });
   };
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <div>
+          {this.state.npc && (
+            <div>
+              <h3>{this.state.npc.name}</h3>
+              <div>
+                <img src={this.state.npc.frontimage} />
+                <h4>HP: {this.state.npc.health}</h4>
+              </div>
+            </div>
+          )}
+        </div>
+        <div>
+          {this.state.user && (
+            <div>
+              <h3>{this.state.user.name}</h3>
+              <div>
+                <img src={this.state.user.backimage} />
+                <h4>HP: {this.state.user.health}</h4>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
   }
 }
 
