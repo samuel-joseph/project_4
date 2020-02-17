@@ -84,7 +84,8 @@ class App extends Component {
             {this.state.currentUser ? (
               <div className="box">
                 <div className="box1">
-                  <Route path="/main" render={() => <Main />} />
+                  <Route path="/main" render={() =>
+                    <Main />} />
                   <Main id={this.state.id} greetings={this.changeGreetings()} />
                 </div>
                 <div className="box2">

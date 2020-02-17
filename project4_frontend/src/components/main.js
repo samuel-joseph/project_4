@@ -36,7 +36,9 @@ class Main extends Component {
           <Route path="/newuser" render={() => <NewUser />} />
           <Route
             path="/profile"
-            render={() => <ShowPokemon Pokemon={this.state.ownPokemon} />}
+            render={() => <ShowPokemon
+              Pokemon={this.state.ownPokemon}
+            />}
           />
           {/* {this.state.ownPokemon && (
             <ShowPokemon Pokemon={this.state.ownPokemon} />

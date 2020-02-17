@@ -106,9 +106,6 @@ class NewUser extends Component {
                   </p>
                 ))}
               </div>
-              <Link to="/main">
-                <button>OK</button>
-              </Link>
             </>
           )}
         </div>
