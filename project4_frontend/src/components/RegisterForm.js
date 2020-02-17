@@ -21,7 +21,7 @@ export default class RegisterForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         {this.props.errorText && <p>{this.props.errorText}</p>}
         <form onSubmit={(e) => this.props.handleRegister(e, this.state)}>
           <h2>Register!</h2>

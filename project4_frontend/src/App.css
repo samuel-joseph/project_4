@@ -1,4 +1,90 @@
-img {
-  height: 100px;
-  /* width: ; */
+body {
+  background-color: black;
+}
+
+.App {
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 90vh;
+  width: 60vw;
+  background-color: rgb(120, 0, 211);
+  border-radius: 20px;
+  padding-top: 25px;
+}
+
+.App1 {
+  margin-right: auto;
+  margin-left: auto;
+  height: 80vh;
+  width: 57vw;
+  background-color: rgba(46, 43, 43);
+  border-radius: 20px;
+  padding-top: 27px;
+}
+
+.App2 {
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  height: 70vh;
+  width: 45vw;
+  background-color: gray;
+  border-radius: 20px;
+}
+
+.box1 {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  width: 45vw;
+  height: 55vh;
+  background-color: gray;
+  overflow: scroll;
+}
+
+.box2 {
+  background-color: rgb(255, 255, 255, 0.7);
+  height: 15vh;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+h1 {
+  text-align: center;
+}
+
+img{
+  width: 12vw;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+}
+
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.pokedex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.box2a{
+  width: 55vw;
+}
+
+.box2b{
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
 }

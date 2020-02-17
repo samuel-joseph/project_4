@@ -24,7 +24,8 @@ class App extends Component {
       currentUser: null,
       errorText: "",
       pokemon: null,
-      id: ""
+      id: "",
+      greetings: ""
     };
   }
 
@@ -56,14 +57,11 @@ class App extends Component {
     localStorage.removeItem("id");
   };
 
-  // loadPokemon = async () => {
-  //   const pokemon = await getallPokemon();
-  //   // pokemon.push(await indexPokemon());
-  //   this.setState({
-  //     pokemon
-  //   });
-  // };
-
+  changeGreetings = (req) => {
+    // console.log("hey")
+  //  this.setState({greetings:req})
+  }
+  
   componentDidMount() {
     verifyUser();
     console.log(this.state.currentUser);
@@ -81,40 +79,79 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.currentUser ? (
-          <div>
-            <h1>Hello {this.state.currentUser.trainername}</h1>
-            <Route path="/main" render={() => <Main />} />
-            <Main id={this.state.id} />
-            <button onClick={this.handleLogout}>Logout!!!</button>
+        <div className="App1">
+          <div className="App2">
+            {this.state.currentUser ? (
+              <div className="box">
+                <div className="box1">
+                  <Route path="/main" render={() => <Main />} />
+                  <Main id={this.state.id} greetings={this.changeGreetings()} />
+                </div>
+                <div className="box2">
+                  <div className="box2a">
+                    <h1>
+                      {this.state.greetings}{" "}
+                      {this.state.currentUser.trainername}
+                    </h1>
+                  </div>
+                  <div className="box2b">
+                    <button>
+                      <Link to="/pokedex">POKEDEX</Link>
+                    </button>
+                    <button>
+                      <Link to="/profile">PROFILE</Link>
+                    </button>
+                    <button onClick={this.handleLogout}>Logout!!!</button>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="box">
+                <div className="box1">
+                  <Route
+                    path="/pokedex"
+                    render={() => (
+                      <Pokedex greetings={this.changeGreetings()} />
+                    )}
+                  />
+                  <Route
+                    path="/login"
+                    render={() => (
+                      <LoginForm
+                        greetings={this.changeGreetings()}
+                        handleLogin={this.handleLogin}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/register"
+                    render={() => (
+                      <RegisterForm
+                        greetings={this.changeGreetings()}
+                        handleRegister={this.handleRegister}
+                        errorText={this.state.errorText}
+                      />
+                    )}
+                  />
+                </div>
+                <div className="box2">
+                  <div className="box2a"></div>
+                  <div className="box2b">
+                    <Link to="/register">
+                      <button>Register</button>
+                    </Link>
+                    <Link to="/login">
+                      <button>Login</button>
+                    </Link>
+                    <Link to="/pokedex">
+                      <button>Pokedex</button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-        ) : (
-          <nav>
-            <Link to="/register">
-              <button>Register</button>
-            </Link>
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-            <Link to="/pokedex">
-              <button>Pokedex</button>
-            </Link>
-            <Route path="/pokedex" render={() => <Pokedex />} />
-            <Route
-              path="/login"
-              render={() => <LoginForm handleLogin={this.handleLogin} />}
-            />
-            <Route
-              path="/register"
-              render={() => (
-                <RegisterForm
-                  handleRegister={this.handleRegister}
-                  errorText={this.state.errorText}
-                />
-              )}
-            />
-          </nav>
-        )}
+        </div>
       </div>
     );
   }

@@ -12,6 +12,8 @@ class Pokedex extends Component {
     };
   }
 
+  delete = async () => {};
+
   componentDidMount = async () => {
     const pokemon = await getallPokemon();
     this.setState({ pokemon });
@@ -21,17 +23,30 @@ class Pokedex extends Component {
   render() {
     return (
       <div>
-        <h2>POKEDEX</h2>
-        {this.state.pokemon && (
-          <>
-            {this.state.pokemon.map(data => (
-              <div>
-                <h4>{data.name}</h4>
-                <img src={data.frontimage} />
-              </div>
-            ))}
-          </>
-        )}
+        <h1>POKEDEX</h1>
+        <div className="pokedex">
+          {this.state.pokemon && (
+            <>
+              {this.state.pokemon.map(data => (
+                <div className="inner">
+                  <div className="desc">
+                    <h4>{data.name}</h4>
+                    <img onClick={() => this.delete()} src={data.frontimage} />
+                  </div>
+                  <div className="moves">
+                    <p>Level:{data.level}</p>
+                    <p>Health:{data.health}</p>
+                    {data.moves.map(move => (
+                      <p>
+                        {move.name} Damage:{move.power}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
+        </div>
       </div>
     );
   }

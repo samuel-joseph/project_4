@@ -29,10 +29,6 @@ class Main extends Component {
   render() {
     return (
       <div className="main">
-        <nav>
-          <Link to="/pokedex">POKEDEX</Link>
-          <Link to="/profile">PROFILE</Link>
-        </nav>
         <main>
           <Route path="/pokedex" render={() => <Pokedex />} />
           <Route path="/newuser" render={() => <NewUser />} />
