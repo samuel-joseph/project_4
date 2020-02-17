@@ -12,9 +12,16 @@ class Battle extends Component {
     };
   }
 
+  randomFunc(random) {
+    let response = random[Math.floor(Math.random() * random.length)];
+    console.log(response);
+    return response;
+  }
+
   componentDidMount = async () => {
-    console.log(localStorage.getItem("id"));
-    let resp = await getallPokemon();
+    let resp = await getallPokemon(1);
+    let npc = this.randomFunc(resp)
+    console.log(npc)
   };
 
   render() {
