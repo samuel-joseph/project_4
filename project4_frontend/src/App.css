@@ -142,6 +142,19 @@ button {
   background-color: white;
 }
 
-.potion{
+.potion {
   width: 1.5vw;
+}
+
+.maxhealthbar {
+  position: relative;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.healthbar {
+  background: #1da598;
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.2s ease-in;
 }

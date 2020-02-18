@@ -7,7 +7,7 @@ import {
   remove
 } from "../services/api_helper";
 
-import HealthBar from "./healthBar";
+import MaxHealthBar from "./maxHealthBar";
 
 class Battle extends Component {
   constructor(props) {
@@ -145,7 +145,9 @@ class Battle extends Component {
                 <div>
                   <h3>{this.state.user.name}</h3>
                   <h4>HP: {this.state.user.current_health}</h4>
-                  <HealthBar />
+                  <MaxHealthBar
+                    percentage={this.state.user.current_health}
+                  />
                 </div>
               </div>
             </div>
