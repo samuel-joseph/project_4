@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Pokedex from "./Pokedex";
 import { options } from "../services/api_helper";
-import { storePoke, updateName } from "../services/api_helper";
+import { storePoke, update } from "../services/api_helper";
 import { Link, withRouter } from "react-router-dom";
 
 class NewUser extends Component {
@@ -45,7 +45,7 @@ class NewUser extends Component {
     event.preventDefault();
     let name = this.state.formData;
     let id = this.state.id;
-    let resp = await updateName(id, name);
+    let resp = await update(id, name);
     this.props.history.push("/main");
   };
 

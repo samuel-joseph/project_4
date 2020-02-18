@@ -79,7 +79,7 @@ export const getPokemon = async id => {
   return resp.data;
 };
 
-export const updateName = async (id, postData) => {
+export const update = async (id, postData) => {
   console.log(id);
   console.log(postData);
   const resp = await api.put(`/pokemons/${id}`, postData);

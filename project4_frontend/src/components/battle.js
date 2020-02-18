@@ -27,15 +27,33 @@ class Battle extends Component {
     let randomUserAttack = this.randomFunc(this.state.user.moves);
     let userAttack = randomUserAttack.power;
 
-    console.log(randomUserAttack.name);
+    this.props.display(
+      `User pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
+      Rival pokemon use ${randomNpcAttack.name} with ${randomNpcAttack.power} damage!`
+    );
     npcHealth = npcHealth - userAttack;
     userHealth = userHealth - npcAttack;
-    console.log(npcHealth);
 
+    if (npcHealth <= 0 && userHealth <= 0) {
+      this.props.display(`Both Pokemons have fainted! Send your pokemon to Pokecenter`)
+    }
+    else if (npcHealth <= 0) {
+      this.props.display(
+        `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
+      );
+    } else if (userHealth <= 0) {
+      this.props.display(
+        `${this.state.user.name} fainted...\n${this.state.npc.name} win!`
+      );
+    }
     this.setState(prevState => ({
       npc: { ...prevState.npc, current_health: npcHealth },
       user: { ...prevState.user, current_health: userHealth }
     }));
+
+    
+
+
   };
 
   // this.setState(prevState => ({
