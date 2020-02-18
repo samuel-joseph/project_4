@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route, withRouter } from "react-router-dom";
-import { getallPokemon, getPokemon } from "../services/api_helper";
+import { getallPokemon, getPokemon, update } from "../services/api_helper";
 
 class Battle extends Component {
   constructor(props) {
@@ -8,7 +8,13 @@ class Battle extends Component {
 
     this.state = {
       npc: null,
-      user: null
+      user: null,
+      formDataHp: {
+        current_health: 0
+      },
+      formDataId: {
+        id: 0
+      }
     };
   }
 
@@ -19,6 +25,8 @@ class Battle extends Component {
   }
 
   battle = async () => {
+    let id = this.state.user.id;
+    let current_health = this.state.formDataHp;
     let npcHealth = this.state.npc.current_health;
     let randomNpcAttack = this.randomFunc(this.state.npc.moves);
     let npcAttack = randomNpcAttack.power;
@@ -35,9 +43,10 @@ class Battle extends Component {
     userHealth = userHealth - npcAttack;
 
     if (npcHealth <= 0 && userHealth <= 0) {
-      this.props.display(`Both Pokemons have fainted! Send your pokemon to Pokecenter`)
-    }
-    else if (npcHealth <= 0) {
+      this.props.display(
+        `Both Pokemons have fainted! Send your pokemon to Pokemon Center`
+      );
+    } else if (npcHealth <= 0) {
       this.props.display(
         `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
@@ -45,15 +54,18 @@ class Battle extends Component {
       this.props.display(
         `${this.state.user.name} fainted...\n${this.state.npc.name} win!`
       );
+    } else {
+      this.setState(prevState => ({
+        npc: { ...prevState.npc, current_health: npcHealth },
+        user: { ...prevState.user, current_health: userHealth },
+        formDataHp: {
+          ...prevState.formDataHp,
+          current_health: userHealth
+        }
+      }));
     }
-    this.setState(prevState => ({
-      npc: { ...prevState.npc, current_health: npcHealth },
-      user: { ...prevState.user, current_health: userHealth }
-    }));
 
-    
-
-
+    let resp = await update(id, current_health);
   };
 
   // this.setState(prevState => ({
@@ -75,6 +87,9 @@ class Battle extends Component {
     console.log("USER");
     console.log(user);
     this.setState({ npc, user });
+    this.setState(prevState => ({
+      formDataId: { ...prevState.formDataId, id: this.state.user.id }
+    }));
   };
 
   render() {

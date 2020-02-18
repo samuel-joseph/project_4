@@ -12,7 +12,7 @@ export default function ShowPokemon(props) {
                 <div className="pokemonDetails">
                   <img src={pokemon.frontimage} />
                   <h4>LV: {pokemon.level}</h4>
-                  <h4>HP: {pokemon.health}</h4>
+                  <h4>HP: {pokemon.current_health}</h4>
                 </div>
                 <div className="pokemonMoves">
                   {pokemon.moves.map(move => (

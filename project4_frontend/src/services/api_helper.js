@@ -35,8 +35,12 @@ export const verifyUser = () => {
 };
 
 export const getallPokemon = async () => {
-  const resp = await api.get("/pokedex");
-  return resp.data;
+  let resp = [];
+  const data = await api.get("/pokedex");
+  for (let i = 0; i <= 25; i++) {
+    resp.push(data.data[i]);
+  }
+  return resp;
 };
 
 export const options = async () => {
