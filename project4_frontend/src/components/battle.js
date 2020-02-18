@@ -7,6 +7,8 @@ import {
   remove
 } from "../services/api_helper";
 
+import HealthBar from "./healthBar";
+
 class Battle extends Component {
   constructor(props) {
     super(props);
@@ -112,9 +114,7 @@ class Battle extends Component {
     }));
   };
 
-
   render() {
-
     // let userHp = this.state.user.current_health
     // let npcHp = this.state.npc.current_health
     // let spentPercent = (this.state.spent / this.state.budget * 100);
@@ -131,7 +131,6 @@ class Battle extends Component {
                 <div>
                   <h3>{this.state.npc.name}</h3>
                   <h4>HP: {this.state.npc.current_health}</h4>
-                  
                 </div>
                 <img src={this.state.npc.frontimage} />
               </div>
@@ -146,6 +145,7 @@ class Battle extends Component {
                 <div>
                   <h3>{this.state.user.name}</h3>
                   <h4>HP: {this.state.user.current_health}</h4>
+                  <HealthBar />
                 </div>
               </div>
             </div>
