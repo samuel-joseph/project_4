@@ -20,6 +20,7 @@ class Profile extends Component {
     }));
   };
 
+
   handleSubmit = async e => {
     e.preventDefault();
     let id = this.state.Pokemon[0].id;

@@ -90,3 +90,10 @@ export const update = async (id, postData) => {
   console.log(resp);
   return resp.data;
 };
+
+export const remove = async id => {
+  console.log(id);
+  console.log("HELLOOO DELETE PLEASE");
+  const resp = await api.delete(`/pokemons/${id}`);
+  return resp.data;
+};

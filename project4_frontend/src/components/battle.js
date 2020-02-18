@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Link, Route, withRouter } from "react-router-dom";
-import { getallPokemon, getPokemon, update } from "../services/api_helper";
+import {
+  getallPokemon,
+  getPokemon,
+  update,
+  remove
+} from "../services/api_helper";
 
 class Battle extends Component {
   constructor(props) {
@@ -24,6 +29,10 @@ class Battle extends Component {
     console.log(response);
     return response;
   }
+
+  burry = async id => {
+    let resp = await remove(id);
+  };
 
   battle = async () => {
     let id = this.state.user.id;
@@ -52,10 +61,12 @@ class Battle extends Component {
         user: { ...this.state.user, current_health: userHealth },
         fainted: true
       });
+      this.burry(id);
     } else if (npcHealth < 0 || npcHealth === 0) {
       this.props.display(
         `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
+      let resp = await update(id, current_health);
       this.setState({
         npc: { ...this.state.npc, current_health: npcHealth },
         user: { ...this.state.user, current_health: userHealth },
@@ -70,6 +81,7 @@ class Battle extends Component {
         user: { ...this.state.user, current_health: userHealth },
         fainted: true
       });
+      this.burry(id);
     } else {
       this.setState(prevState => ({
         npc: { ...prevState.npc, current_health: npcHealth },
@@ -80,10 +92,8 @@ class Battle extends Component {
         }
       }));
     }
-
     let resp = await update(id, current_health);
   };
-
 
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
