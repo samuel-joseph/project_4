@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter, Route } from "react-router-dom";
 import NewUser from "./NewUser";
 import { getPokemon, getMoves } from "../services/api_helper";
-import ShowPokemon from "./ShowPokemon";
+import Profile from "./Profile";
 import Pokedex from "./Pokedex";
 import Battle from "./battle";
 
@@ -55,7 +55,7 @@ class Main extends Component {
           <Route
             path="/profile"
             render={() => (
-              <ShowPokemon
+              <Profile
                 // greetings={() => this.greetings()}
                 Pokemon={this.state.ownPokemon}
               />

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ShowPokemon(props) {
+export default function Profile(props) {
   return (
     <div>
       {props.Pokemon && (
