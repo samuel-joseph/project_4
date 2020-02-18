@@ -39,7 +39,6 @@ class LoginForm extends Component {
             onChange={this.handleChange}
           />
           <button>Submit</button>
-          <Link to="/register">Register</Link>
         </form>
       </div>
     );

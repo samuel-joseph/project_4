@@ -5,6 +5,7 @@ const api = axios.create({
 });
 
 export const loginUser = async loginData => {
+  console.log(loginData);
   const resp = await api.post("/auth/login", loginData);
   localStorage.setItem("authToken", resp.data.auth_token);
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`;
@@ -17,13 +18,13 @@ export const loginUser = async loginData => {
 
 export const registerUser = async registerData => {
   const resp = await api.post("/signup", registerData);
-  console.log(resp);
+  localStorage.setItem("authToken", resp.data.auth_token);
   api.defaults.headers.common.authorization = `Bearer ${resp.data.auth_token}`;
   localStorage.setItem("authToken", resp.data.auth_token);
   localStorage.setItem("name", resp.data.user.name);
   localStorage.setItem("trainername", resp.data.user.trainername);
   localStorage.setItem("id", resp.data.user.id);
-  console.log(resp.data.user);
+  console.log(resp);
   return resp.data.user;
 };
 

@@ -21,24 +21,41 @@ class App extends Component {
 
     this.state = {
       name: "",
-      trainername: "",
-      password: "",
       currentUser: null,
       errorText: "",
       pokemon: null,
       id: "",
-      greetings: ""
+      greetings: "",
+      formData: {
+        trainername: "",
+        password: ""
+      }
     };
   }
 
+  reloadReg = (trainername, password) => {
+    this.setState(prevState => ({
+      formData: { ...prevState.formData, trainername }
+    }));
+    this.setState(prevState => ({
+      formData: { ...prevState.formData, password }
+    }));
+  };
+
   handleRegister = async (e, registerData) => {
     e.preventDefault();
-    const currentUser = await registerUser(registerData);
-    console.log(`This is the currentUser ${currentUser}`);
-    const id = currentUser.id;
-    console.log(`This is the id ${id}`);
-    this.setState({ currentUser, id });
-    this.props.history.push("/main");
+    const regData = await registerUser(registerData);
+    const trainername = regData.trainername;
+    const password = regData.password;
+    const formData = this.state.regData;
+    const id = this.state.id;
+    this.reloadReg(trainername, password);
+    console.log(this.state.formData);
+    const currentUser = await loginUser(this.state.formData);
+    this.setState({
+      currentUser,
+      id
+    });
   };
 
   handleLogin = async (e, loginData) => {
@@ -92,7 +109,7 @@ class App extends Component {
                   <Route
                     path="/battle"
                     render={() => (
-                      <Battle display={(e) => this.changeGreetings(e)} />
+                      <Battle display={e => this.changeGreetings(e)} />
                     )}
                   />
                   <Main

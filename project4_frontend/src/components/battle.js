@@ -112,7 +112,15 @@ class Battle extends Component {
     }));
   };
 
+
   render() {
+
+    // let userHp = this.state.user.current_health
+    // let npcHp = this.state.npc.current_health
+    // let spentPercent = (this.state.spent / this.state.budget * 100);
+    // let spendingPercent = (this.state.spending / this.state.budget * 100);
+    // let balPercent = (100 - spentPercent - spendingPercent);
+
     return (
       <div className="battle">
         {console.log(this.state)}
@@ -123,6 +131,7 @@ class Battle extends Component {
                 <div>
                   <h3>{this.state.npc.name}</h3>
                   <h4>HP: {this.state.npc.current_health}</h4>
+                  
                 </div>
                 <img src={this.state.npc.frontimage} />
               </div>
