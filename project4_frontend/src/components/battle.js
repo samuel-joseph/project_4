@@ -14,7 +14,8 @@ class Battle extends Component {
       },
       formDataId: {
         id: 0
-      }
+      },
+      fainted: false
     };
   }
 
@@ -46,14 +47,29 @@ class Battle extends Component {
       this.props.display(
         `Both Pokemons have fainted! Send your pokemon to Pokemon Center`
       );
-    } else if (npcHealth <= 0) {
+      this.setState({
+        npc: { ...this.state.npc, current_health: npcHealth },
+        user: { ...this.state.user, current_health: userHealth },
+        fainted: true
+      });
+    } else if (npcHealth < 0 || npcHealth === 0) {
       this.props.display(
         `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
-    } else if (userHealth <= 0) {
+      this.setState({
+        npc: { ...this.state.npc, current_health: npcHealth },
+        user: { ...this.state.user, current_health: userHealth },
+        fainted: true
+      });
+    } else if (userHealth < 0 || userHealth === 0) {
       this.props.display(
         `${this.state.user.name} fainted...\n${this.state.npc.name} win!`
       );
+      this.setState({
+        npc: { ...this.state.npc, current_health: npcHealth },
+        user: { ...this.state.user, current_health: userHealth },
+        fainted: true
+      });
     } else {
       this.setState(prevState => ({
         npc: { ...prevState.npc, current_health: npcHealth },
@@ -68,12 +84,6 @@ class Battle extends Component {
     let resp = await update(id, current_health);
   };
 
-  // this.setState(prevState => ({
-  //   formData: {
-  //     ...prevState.formData,
-  //     [name]: value
-  //   }
-  // }))
 
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
@@ -122,9 +132,11 @@ class Battle extends Component {
             </div>
           )}
           <div className="fightButton">
-            <button onClick={() => this.battle()} className="fight">
-              FIGHT
-            </button>
+            {!this.state.fainted && (
+              <button onClick={() => this.battle()} className="fight">
+                FIGHT
+              </button>
+            )}
           </div>
         </div>
       </div>

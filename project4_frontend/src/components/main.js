@@ -22,7 +22,6 @@ class Main extends Component {
   componentDidMount = async () => {
     console.log("CHECK!!!!");
     this.setState({ id: this.props.id });
-    console.log(localStorage.getItem("id"));
     let ownPokemon = await getPokemon(localStorage.getItem("id"));
     this.setState({ ownPokemon });
     if (ownPokemon.length !== 0 && ownPokemon) {
