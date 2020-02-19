@@ -9,10 +9,6 @@ import {
 
 import MaxHealthBar from "./maxHealthBar";
 
-const styles = {
-  transition: "transition duration: .5"
-};
-
 class Battle extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +43,7 @@ class Battle extends Component {
   };
 
   battle = async () => {
+    let user = localStorage.getItem("trainername")
     let id = this.state.user.id;
     let current_health = this.state.formDataHp;
     let npcHealth = this.state.npc.current_health;
@@ -60,7 +57,7 @@ class Battle extends Component {
     this.setState({ opacity: 0 });
 
     this.props.display(
-      `User pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
+      `${user} pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
       Rival pokemon use ${randomNpcAttack.name} with ${randomNpcAttack.power} damage!`
     );
     npcHealth = npcHealth - userAttack;
@@ -80,7 +77,7 @@ class Battle extends Component {
       this.props.history.push("/newuser");
     } else if (npcHealth < 0 || npcHealth === 0) {
       this.props.display(
-        `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
+        `${user} pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage! ${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
 
       let resp = await update(id, current_health);
@@ -93,7 +90,7 @@ class Battle extends Component {
       });
     } else if (userHealth < 0 || userHealth === 0) {
       this.props.display(
-        `${this.state.user.name} fainted...\n${this.state.npc.name} win!`
+        `Rival pokemon use ${randomNpcAttack.name} with ${randomNpcAttack.power} damage! ${this.state.user.name} fainted...\n${this.state.npc.name} win!`
       );
       this.setState({
         npc: { ...this.state.npc, current_health: npcHealth },
@@ -111,8 +108,8 @@ class Battle extends Component {
           current_health: userHealth
         }
       }));
+      let resp = await update(id, current_health);
     }
-    let resp = await update(id, current_health);
   };
 
   componentDidMount = async () => {
@@ -158,10 +155,7 @@ class Battle extends Component {
             <div>
               <div className="players2">
                 <img className="userImg" src={this.state.user.backimage} />
-                <img
-                  className="animated infinite bounce"
-                  src="https://s3.amazonaws.com/gameartpartnersimagehost/wp-content/uploads/edd/2015/08/Featured-Image.png"
-                />
+                <h1 className="animated infinite bounce delay-2s">Example</h1>
                 <div className="p2stats">
                   <h3>{this.state.user.name}</h3>
                   <h4>LV: {this.state.user.level}</h4>

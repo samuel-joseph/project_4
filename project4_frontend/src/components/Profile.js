@@ -14,10 +14,11 @@ class Profile extends Component {
     };
   }
 
-  heal = current_health => {
+  heal = async current_health => {
     this.setState(prevState => ({
       formData: { ...prevState.current_health, current_health }
     }));
+    let resp = await update(this.state.Pokemon[0].id, this.state.formData);
   };
 
   handleSubmit = async e => {
@@ -25,10 +26,8 @@ class Profile extends Component {
     let id = this.state.Pokemon[0].id;
     let health = this.state.Pokemon[0].health;
     let formData = this.state.formData;
-
-    this.heal(health);
-
     let resp = await update(id, formData);
+    this.heal(health);
   };
 
   componentDidMount = async () => {
@@ -40,7 +39,9 @@ class Profile extends Component {
         current_health: Pokemon.current_health
       }
     });
-    this.props.greetings("This is your inventory, make sure to give your Pokemon potion if HP is LOW!")
+    this.props.greetings(
+      "This is your inventory, make sure to give your Pokemon potion if HP is LOW!"
+    );
   };
 
   render() {
@@ -59,7 +60,7 @@ class Profile extends Component {
                       HP:{" "}
                       {this.state.formData.current_health
                         ? this.state.formData.current_health
-                        : pokemon.current_health}{" "}
+                        : pokemon.current_health}/{pokemon.health}{" "}
                       {pokemon.health > pokemon.current_health && (
                         <img
                           className="potion"

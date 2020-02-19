@@ -209,9 +209,9 @@ button {
 }
 
 .fx {
-  padding: 0;
-  position: absolute;
-  animation: animate 15% linear infinite;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
 }
 
 .userImg {
