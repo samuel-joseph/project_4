@@ -1,0 +1,5 @@
+class DropPokedexTable < ActiveRecord::Migration[6.0]
+  def change
+    drop_table :pokedexes
+  end
+end
