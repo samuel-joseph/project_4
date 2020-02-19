@@ -17,15 +17,15 @@ class Pokedex extends Component {
   componentDidMount = async () => {
     const pokemon = await getallPokemon();
     this.setState({ pokemon });
-    console.log(this.state.pokemon);
     // this.props.greetings("Pokedex");
   };
 
   render() {
     return (
-      <div>
+      <div className="pokedexmain">
         <h1>POKEDEX</h1>
         <div className="pokedex">
+          {console.log(this.state.pokemon)}
           {this.state.pokemon && (
             <>
               {this.state.pokemon.map(data => (

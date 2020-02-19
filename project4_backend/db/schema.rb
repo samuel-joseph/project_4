@@ -12,18 +12,21 @@
 
 ActiveRecord::Schema.define(version: 2020_02_17_190630) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "moves", force: :cascade do |t|
     t.string "name"
     t.integer "power"
-    t.integer "pokemon_id", null: false
+    t.bigint "pokemon_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pokemon_id"], name: "index_moves_on_pokemon_id"
   end
 
   create_table "pokemon_user", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "pokemon_id_id"
+    t.bigint "user_id_id"
+    t.bigint "pokemon_id_id"
     t.index ["pokemon_id_id"], name: "index_pokemon_user_on_pokemon_id_id"
     t.index ["user_id_id"], name: "index_pokemon_user_on_user_id_id"
   end
@@ -37,14 +40,14 @@ ActiveRecord::Schema.define(version: 2020_02_17_190630) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "created_by"
     t.integer "health"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "current_health"
     t.index ["user_id"], name: "index_pokemons_on_user_id"
   end
 
   create_table "trainers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "pokemon_id"
+    t.bigint "user_id"
+    t.bigint "pokemon_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pokemon_id"], name: "index_trainers_on_pokemon_id"

@@ -24,15 +24,12 @@ class NewUser extends Component {
   }
 
   storePokemon(chosenPokemon) {
-    console.log(chosenPokemon);
     this.setState({ pokemon: chosenPokemon });
     this.storeData(chosenPokemon);
-    console.log(this.state.pokemon);
   }
 
   storeData = async chosenPokemon => {
     const id = await storePoke(chosenPokemon);
-    console.log(id);
     this.setState({ id });
   };
 
@@ -50,13 +47,11 @@ class NewUser extends Component {
   };
 
   componentDidMount = async () => {
-    console.log(this.state.pokemon);
     let response = await options();
     let newPokemon = [];
     for (let i = 0; i < 3; i++) {
       {
         newPokemon.push(this.randomFunc(response));
-        console.log(newPokemon);
       }
     }
     this.props.greetings(`Welcome trainer ${localStorage.getItem("trainername")}! Pick a pokeball to start. Good luck!`)
@@ -65,7 +60,6 @@ class NewUser extends Component {
 
   handleChange = event => {
     let value = event.target.value;
-    console.log(value);
     let name = event.target.name;
     this.setState(prevState => ({
       formData: {

@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "https://obscure-basin-50515.herokuapp.com/"
+  // baseURL: "http://localhost:3000"
 });
 
 export const loginUser = async loginData => {
@@ -39,8 +40,10 @@ export const getallPokemon = async () => {
   let resp = [];
   const data = await api.get("/pokedex");
   for (let i = 0; i <= 25; i++) {
+    console.log(data)
     resp.push(data.data[i]);
   }
+  console.log(resp);
   return resp;
 };
 

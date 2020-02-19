@@ -50,7 +50,6 @@ class App extends Component {
     const formData = this.state.regData;
     const id = this.state.id;
     this.reloadReg(trainername, password);
-    console.log(this.state.formData);
     const currentUser = await loginUser(this.state.formData);
     this.setState({
       currentUser,
@@ -63,7 +62,6 @@ class App extends Component {
     const currentUser = await loginUser(loginData);
     const id = currentUser.id;
     this.setState({ currentUser, id });
-    console.log(this.state.currentUser);
   };
 
   handleLogout = () => {
@@ -78,14 +76,12 @@ class App extends Component {
   };
 
   changeGreetings(greetings) {
-    console.log(greetings);
     this.setState({ greetings });
   }
 
   componentDidMount() {
     verifyUser();
     this.changeGreetings("WELCOME TRAINER!");
-    console.log(this.state.currentUser);
     // this.loadPokemon();
     if (localStorage.getItem("authToken")) {
       const trainername = localStorage.getItem("trainername");

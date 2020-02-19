@@ -13,6 +13,12 @@ body {
   padding-top: 25px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .yellow {
   color: yellow;
 }
@@ -29,7 +35,7 @@ body {
   color: purple;
 }
 
-.green{
+.green {
   color: green;
 }
 
@@ -233,7 +239,7 @@ button {
   animation-iteration-count: infinite;
 }
 
-.box1{
+.box1 {
   background-color: gray;
 }
 
@@ -249,7 +255,6 @@ button {
   animation-iteration-count: infinite;
   /* position: absolute; */
 }
-
 
 .white {
   color: white;
@@ -281,8 +286,87 @@ button {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   body {
-    background-color: white;
+    background-color: rgb(120, 0, 211);
   }
+
+  .App {
+    margin-top: 0;
+    width: 100vw;
+    background-color: rgb(120, 0, 211);
+    border-radius: 20px;
+    padding-top: 25px;
+  }
+
+  .App1 {
+    margin-right: auto;
+    margin-left: auto;
+    height: 90vh;
+    width: 95vw;
+    background-color: rgba(0, 0, 0);
+    border-radius: 20px;
+    padding-top: 27px;
+  }
+
+  .App2 {
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    height: 80vh;
+    width: 90vw;
+    background-color: gray;
+    border-radius: 20px;
+  }
+
+  .box1 {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    width: 90vw;
+    height: 65vh;
+    background-color: gray;
+    overflow: scroll;
+  }
+
+  .box2 {
+    background-color: rgb(255, 255, 255, 0.7);
+    height: 15vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    /* flex-direction: column; */
+    font-size: 12pt;
+  }
+
+  .box2b {
+    display: grid;
+    /* grid-template-columns: 100px 100px; */
+    /* grid-template-rows: auto auto; */
+    justify-items: center;
+    align-items: center;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    width: 20vw;
+    border: none;
+  }
+
+  img {
+    width: 40vw;
+  }
+
+  .pokedex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+ 
 }

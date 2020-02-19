@@ -32,7 +32,6 @@ class Battle extends Component {
 
   randomFunc(random) {
     let response = random[Math.floor(Math.random() * random.length)];
-    console.log(response);
     return response;
   }
 
@@ -142,14 +141,9 @@ class Battle extends Component {
   componentDidMount = async () => {
     let resp = await getallPokemon(1);
     let resp1 = await getPokemon(localStorage.getItem("id"));
-    console.log(resp1);
     let npc = this.randomFunc(resp);
     this.props.display("BATTLE");
-    console.log("NPC");
-    console.log(npc);
     let user = resp1[0];
-    console.log("USER");
-    console.log(user);
     this.setState({ npc, user });
     this.setState(prevState => ({
       formDataId: { ...prevState.formDataId, id: this.state.user.id }
@@ -159,7 +153,6 @@ class Battle extends Component {
   render() {
     return (
       <div className="battle">
-        {console.log(this.state)}
         <div className="npc">
           {this.state.npc && (
             <div>
