@@ -87,6 +87,12 @@ class Battle extends Component {
       this.props.display(
         `${user} pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage! ${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
+      setTimeout(
+        function() {
+          this.setState({ animate: false, animate1: false });
+        }.bind(this),
+        1000
+      );
 
       let resp = await update(id, current_health);
       npcHealth = 0;
@@ -99,6 +105,12 @@ class Battle extends Component {
     } else if (userHealth < 0 || userHealth === 0) {
       this.props.display(
         `Rival pokemon use ${randomNpcAttack.name} with ${randomNpcAttack.power} damage! ${this.state.user.name} fainted...\n${this.state.npc.name} win!`
+      );
+      setTimeout(
+        function() {
+          this.setState({ animate: false, animate1: false });
+        }.bind(this),
+        1000
       );
       this.setState({
         npc: { ...this.state.npc, current_health: npcHealth },

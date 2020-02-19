@@ -119,7 +119,7 @@ class App extends Component {
                   />
                   <Main
                     id={this.state.id}
-                    greetings={(e) => this.changeGreetings(e)}
+                    greetings={e => this.changeGreetings(e)}
                   />
                 </div>
                 <div className="box2">
@@ -131,14 +131,14 @@ class App extends Component {
                     </h5>
                   </div>
                   <div className="box2b">
+                  <button>
+                      <Link to="/battle">BATTLE</Link>
+                    </button>
                     <button>
                       <Link to="/pokedex">POKEDEX</Link>
                     </button>
                     <button>
                       <Link to="/profile">PROFILE</Link>
-                    </button>
-                    <button>
-                      <Link to="/battle">BATTLE</Link>
                     </button>
                     <button onClick={this.handleLogout}>LOGOUT</button>
                   </div>
@@ -193,6 +193,13 @@ class App extends Component {
               </div>
             )}
           </div>
+          <h1 className="white">
+            GAMEJOE <span className="red">C</span>
+            <span className="purple">O</span>
+            <span className="green">L</span>
+            <span className="yellow">O</span>
+            <span className="blue">R</span>
+          </h1>
         </div>
       </div>
     );

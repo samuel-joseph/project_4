@@ -13,12 +13,32 @@ body {
   padding-top: 25px;
 }
 
+.yellow {
+  color: yellow;
+}
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blue;
+}
+
+.purple {
+  color: purple;
+}
+
+.green{
+  color: green;
+}
+
 .App1 {
   margin-right: auto;
   margin-left: auto;
   height: 80vh;
   width: 57vw;
-  background-color: rgba(46, 43, 43);
+  background-color: rgba(0, 0, 0);
   border-radius: 20px;
   padding-top: 27px;
 }
@@ -81,6 +101,7 @@ img {
 
 .box2a {
   width: 55vw;
+  border: 2px solid black;
 }
 
 .box2b {
@@ -92,6 +113,7 @@ img {
   grid-column-gap: 0;
   grid-row-gap: 0;
   width: 20vw;
+  border: 2px solid black;
 }
 
 button {
@@ -113,6 +135,7 @@ button {
 .battle {
   display: flex;
   flex-direction: column;
+  background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb2821a-1406-4a1d-9b04-6668f278e944/d841b5t-d14186ca-887a-4f10-b4ca-b16d5aaff49a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJmYjI4MjFhLTE0MDYtNGExZC05YjA0LTY2NjhmMjc4ZTk0NFwvZDg0MWI1dC1kMTQxODZjYS04ODdhLTRmMTAtYjRjYS1iMTZkNWFhZmY0OWEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5Pv6KPt53igISARqXxlqkRR4qtwKEB3LhHLyc1OQ9Wo");
 }
 
 .players1 {
@@ -134,7 +157,6 @@ button {
   flex-direction: row;
   align-items: space;
   justify-content: start;
-  
 }
 
 .p2stats {
@@ -209,6 +231,10 @@ button {
   animation-iteration-count: infinite;
 }
 
+.box1{
+  background-color: gray;
+}
+
 .fx {
   animation-duration: 3s;
   animation-delay: 2s;
@@ -222,39 +248,39 @@ button {
   /* position: absolute; */
 }
 
-.animate1{
+
+.white {
+  color: white;
+}
+.animate1 {
   margin-left: 30%;
   position: absolute;
 }
 
-.animate2{
+.animate2 {
   position: absolute;
-
 }
 
-@keyframes attack{
-  50%{
+@keyframes attack {
+  50% {
     margin-right: 5%;
   }
 }
 
 @keyframes walk {
   22% {
-    margin-right: 2%;
+    margin-right: 1%;
   }
 }
 
 @keyframes jump {
   75% {
-    margin-top: .9%;
+    margin-top: 0.9%;
   }
 }
 
-@keyframes animate {
-  from {
-    margin-bottom: 0;
-  }
-  to {
-    margin-bottom: 10%;
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: white;
   }
 }

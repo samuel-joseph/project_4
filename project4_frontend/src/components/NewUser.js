@@ -50,7 +50,6 @@ class NewUser extends Component {
   };
 
   componentDidMount = async () => {
-    console.log("AM I HERE");
     console.log(this.state.pokemon);
     let response = await options();
     let newPokemon = [];
@@ -60,7 +59,7 @@ class NewUser extends Component {
         console.log(newPokemon);
       }
     }
-    this.props.greetings("WELCOME TRAINER! Pick a pokemon to start.")
+    this.props.greetings(`Welcome trainer ${localStorage.getItem("trainername")}! Pick a pokeball to start. Good luck!`)
     this.setState({ options: newPokemon });
   };
 
