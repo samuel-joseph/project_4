@@ -60,6 +60,7 @@ class NewUser extends Component {
         console.log(newPokemon);
       }
     }
+    this.props.greetings("WELCOME TRAINER! Pick a pokemon to start.")
     this.setState({ options: newPokemon });
   };
 
@@ -78,33 +79,40 @@ class NewUser extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="lab">
           {!this.state.pokemon && (
-            <div>
-              {console.log(this.state.options)}
+            <img
+              className="profOak"
+              src="https://www.pngkey.com/png/full/268-2685104_click-to-edit-pokemon-professor.png"
+            />
+          )}
+          {!this.state.pokemon && (
+            <div className="groupPoke">
               {this.state.options.map(pokemon => (
-                <>
-                  <img
-                    onClick={() => this.storePokemon(pokemon)}
-                    src="https://i7.pngguru.com/preview/575/483/741/pokemon-ranger-pokemon-omega-ruby-and-alpha-sapphire-poke-ball-sprite-sprite.jpg"
-                  />
-                </>
+                <img
+                  className="pokeball"
+                  onClick={() => this.storePokemon(pokemon)}
+                  src="https://purepng.com/public/uploads/medium/purepng.com-pokeballpokeballdevicepokemon-ballpokemon-capture-ball-1701527825795vtfp2.png"
+                />
               ))}
             </div>
           )}
+
           {this.state.pokemon && (
-            <>
-              <img src={this.state.pokemon.frontimage} />
-              <form onSubmit={this.handleSubmit}>
-                <h5>Name of your Pokemon</h5>
-                <input
-                  onChange={this.handleChange}
-                  name="name"
-                  type="text"
-                  placeholder="name"
-                />
-                <input type="submit" />
-              </form>
+            <div className="newPokemon">
+              <div>
+                <img src={this.state.pokemon.frontimage} />
+                <form onSubmit={this.handleSubmit}>
+                  <h5>Name of your Pokemon</h5>
+                  <input
+                    onChange={this.handleChange}
+                    name="name"
+                    type="text"
+                    placeholder="name"
+                  />
+                  <input type="submit" />
+                </form>
+              </div>
               <div>
                 {this.state.pokemon.moves.map(move => (
                   <p>
@@ -112,7 +120,7 @@ class NewUser extends Component {
                   </p>
                 ))}
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

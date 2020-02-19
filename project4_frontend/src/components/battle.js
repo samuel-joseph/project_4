@@ -9,11 +9,16 @@ import {
 
 import MaxHealthBar from "./maxHealthBar";
 
+const styles = {
+  transition: "transition duration: .5"
+};
+
 class Battle extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      opacity: 1,
       npc: null,
       user: null,
       formDataHp: {
@@ -22,7 +27,8 @@ class Battle extends Component {
       formDataId: {
         id: 0
       },
-      fainted: false
+      fainted: false,
+      end: false
     };
   }
 
@@ -36,6 +42,10 @@ class Battle extends Component {
     let resp = await remove(id);
   };
 
+  gameEnd = () => {
+    this.props.history.push("/profile");
+  };
+
   battle = async () => {
     let id = this.state.user.id;
     let current_health = this.state.formDataHp;
@@ -46,6 +56,8 @@ class Battle extends Component {
     let userHealth = this.state.user.current_health;
     let randomUserAttack = this.randomFunc(this.state.user.moves);
     let userAttack = randomUserAttack.power;
+
+    this.setState({ opacity: 0 });
 
     this.props.display(
       `User pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
@@ -59,20 +71,25 @@ class Battle extends Component {
         `Both Pokemons have fainted! Send your pokemon to Pokemon Center`
       );
       this.setState({
-        npc: { ...this.state.npc, current_health: npcHealth },
-        user: { ...this.state.user, current_health: userHealth },
-        fainted: true
+        npc: { ...this.state.npc, current_health: 0 },
+        user: { ...this.state.user, current_health: 0 },
+        fainted: true,
+        end: true
       });
       this.burry(id);
+      this.props.history.push("/newuser");
     } else if (npcHealth < 0 || npcHealth === 0) {
       this.props.display(
         `${this.state.npc.name} fainted...\n${this.state.user.name} win!`
       );
+
       let resp = await update(id, current_health);
+      npcHealth = 0;
       this.setState({
         npc: { ...this.state.npc, current_health: npcHealth },
         user: { ...this.state.user, current_health: userHealth },
-        fainted: true
+        fainted: true,
+        end: true
       });
     } else if (userHealth < 0 || userHealth === 0) {
       this.props.display(
@@ -80,10 +97,11 @@ class Battle extends Component {
       );
       this.setState({
         npc: { ...this.state.npc, current_health: npcHealth },
-        user: { ...this.state.user, current_health: userHealth },
+        user: { ...this.state.user, current_health: 0 },
         fainted: true
       });
       this.burry(id);
+      this.props.history.push("/newuser");
     } else {
       this.setState(prevState => ({
         npc: { ...prevState.npc, current_health: npcHealth },
@@ -115,24 +133,22 @@ class Battle extends Component {
   };
 
   render() {
-    // let userHp = this.state.user.current_health
-    // let npcHp = this.state.npc.current_health
-    // let spentPercent = (this.state.spent / this.state.budget * 100);
-    // let spendingPercent = (this.state.spending / this.state.budget * 100);
-    // let balPercent = (100 - spentPercent - spendingPercent);
-
     return (
       <div className="battle">
         {console.log(this.state)}
         <div className="npc">
           {this.state.npc && (
             <div>
-              <div className="players">
-                <div>
+              <div className="players1">
+                <div className="p1stats">
                   <h3>{this.state.npc.name}</h3>
-                  <h4>HP: {this.state.npc.current_health}</h4>
+                  <h4>LV: {this.state.npc.level}</h4>
+                  <MaxHealthBar percentage={this.state.npc.current_health} />
+                  <h4>
+                    HP: {this.state.npc.current_health}/{this.state.npc.health}
+                  </h4>
                 </div>
-                <img src={this.state.npc.frontimage} />
+                <img className="npcImg" src={this.state.npc.frontimage} />
               </div>
             </div>
           )}
@@ -140,14 +156,20 @@ class Battle extends Component {
         <div className="user">
           {this.state.user && (
             <div>
-              <div className="players">
-                <img src={this.state.user.backimage} />
-                <div>
+              <div className="players2">
+                <img className="userImg" src={this.state.user.backimage} />
+                <img
+                  className="animated infinite bounce"
+                  src="https://s3.amazonaws.com/gameartpartnersimagehost/wp-content/uploads/edd/2015/08/Featured-Image.png"
+                />
+                <div className="p2stats">
                   <h3>{this.state.user.name}</h3>
-                  <h4>HP: {this.state.user.current_health}</h4>
-                  <MaxHealthBar
-                    percentage={this.state.user.current_health}
-                  />
+                  <h4>LV: {this.state.user.level}</h4>
+                  <MaxHealthBar percentage={this.state.user.current_health} />
+                  <h4>
+                    HP: {this.state.user.current_health}/
+                    {this.state.user.health}
+                  </h4>
                 </div>
               </div>
             </div>
@@ -156,6 +178,11 @@ class Battle extends Component {
             {!this.state.fainted && (
               <button onClick={() => this.battle()} className="fight">
                 FIGHT
+              </button>
+            )}
+            {this.state.end && (
+              <button onClick={() => this.gameEnd()} className="fight">
+                END
               </button>
             )}
           </div>

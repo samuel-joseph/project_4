@@ -84,7 +84,7 @@ class App extends Component {
 
   componentDidMount() {
     verifyUser();
-    this.changeGreetings("WHAT IS UP!!");
+    this.changeGreetings("WELCOME TRAINER!");
     console.log(this.state.currentUser);
     // this.loadPokemon();
     if (localStorage.getItem("authToken")) {
@@ -105,7 +105,12 @@ class App extends Component {
             {this.state.currentUser ? (
               <div className="box">
                 <div className="box1">
-                  <Route path="/main" render={() => <Main />} />
+                  <Route
+                    path="/main"
+                    render={() => (
+                      <Main display={e => this.changeGreetings(e)} />
+                    )}
+                  />
                   <Route
                     path="/battle"
                     render={() => (
@@ -114,7 +119,7 @@ class App extends Component {
                   />
                   <Main
                     id={this.state.id}
-                    // greetings={() => this.changeGreetings()}
+                    greetings={(e) => this.changeGreetings(e)}
                   />
                 </div>
                 <div className="box2">

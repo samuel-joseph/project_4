@@ -20,7 +20,6 @@ class Profile extends Component {
     }));
   };
 
-
   handleSubmit = async e => {
     e.preventDefault();
     let id = this.state.Pokemon[0].id;
@@ -35,7 +34,13 @@ class Profile extends Component {
   componentDidMount = async () => {
     let Pokemon = await getPokemon(localStorage.getItem("id"));
     this.setState({ Pokemon });
-    console.log(this.state);
+    this.setState({
+      formData: {
+        ...this.state.formData,
+        current_health: Pokemon.current_health
+      }
+    });
+    this.props.greetings("This is your inventory, make sure to give your Pokemon potion if HP is LOW!")
   };
 
   render() {
@@ -51,7 +56,10 @@ class Profile extends Component {
                     <img src={pokemon.frontimage} />
                     <h4>LV: {pokemon.level}</h4>
                     <h4>
-                      HP: {pokemon.current_health}{" "}
+                      HP:{" "}
+                      {this.state.formData.current_health
+                        ? this.state.formData.current_health
+                        : pokemon.current_health}{" "}
                       {pokemon.health > pokemon.current_health && (
                         <img
                           className="potion"

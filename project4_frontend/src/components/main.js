@@ -15,10 +15,6 @@ class Main extends Component {
     };
   }
 
-  greetings = greet => {
-    this.props.greetings(greet);
-  };
-
   componentDidMount = async () => {
     console.log("CHECK!!!!");
     this.setState({ id: this.props.id });
@@ -45,22 +41,18 @@ class Main extends Component {
           />
           <Route
             path="/newuser"
-            render={() => (
-              <NewUser
-              // greetings={() => this.greetings()}
-              />
-            )}
+            render={() => <NewUser
+              greetings={e => this.props.greetings(e)} />}
           />
           <Route
             path="/profile"
             render={() => (
               <Profile
-                // greetings={() => this.greetings()}
+                greetings={e => this.props.greetings(e)}
                 Pokemon={this.state.ownPokemon}
               />
             )}
           />
-          
         </main>
       </div>
     );
