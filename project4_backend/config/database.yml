@@ -33,4 +33,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: pokemondb
+  username: myuser
+  password: pINANGAY-7
