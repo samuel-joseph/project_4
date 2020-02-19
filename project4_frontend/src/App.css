@@ -134,6 +134,7 @@ button {
   flex-direction: row;
   align-items: space;
   justify-content: start;
+  
 }
 
 .p2stats {
@@ -218,6 +219,24 @@ button {
   animation-name: jump;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  /* position: absolute; */
+}
+
+.animate1{
+  margin-left: 30%;
+  background-color: white;
+  position: absolute;
+}
+
+.animate2{
+  position: absolute;
+
+}
+
+@keyframes attack{
+  50%{
+    margin-right: 5%;
+  }
 }
 
 @keyframes walk {
@@ -228,7 +247,7 @@ button {
 
 @keyframes jump {
   75% {
-    margin-top: 2.5%;
+    margin-top: .9%;
   }
 }
 

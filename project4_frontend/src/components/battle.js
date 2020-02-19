@@ -24,7 +24,8 @@ class Battle extends Component {
         id: 0
       },
       fainted: false,
-      end: false
+      end: false,
+      animate: false
     };
   }
 
@@ -43,7 +44,7 @@ class Battle extends Component {
   };
 
   battle = async () => {
-    let user = localStorage.getItem("trainername")
+    let user = localStorage.getItem("trainername");
     let id = this.state.user.id;
     let current_health = this.state.formDataHp;
     let npcHealth = this.state.npc.current_health;
@@ -54,7 +55,7 @@ class Battle extends Component {
     let randomUserAttack = this.randomFunc(this.state.user.moves);
     let userAttack = randomUserAttack.power;
 
-    this.setState({ opacity: 0 });
+    this.setState({ animate: true });
 
     this.props.display(
       `${user} pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
@@ -110,6 +111,7 @@ class Battle extends Component {
       }));
       let resp = await update(id, current_health);
     }
+    this.setState({ animate: false });
   };
 
   componentDidMount = async () => {
@@ -145,6 +147,7 @@ class Battle extends Component {
                     HP: {this.state.npc.current_health}/{this.state.npc.health}
                   </h4>
                 </div>
+                {this.state.animate && <h1 className="animate1">EXAMPLE</h1>}
                 <img className="npcImg" src={this.state.npc.frontimage} />
               </div>
             </div>
@@ -155,7 +158,7 @@ class Battle extends Component {
             <div>
               <div className="players2">
                 <img className="userImg" src={this.state.user.backimage} />
-                <h1 className="animated infinite bounce delay-2s">Example</h1>
+                {this.state.animate && <h1 className="animate2">Example</h1>}
                 <div className="p2stats">
                   <h3>{this.state.user.name}</h3>
                   <h4>LV: {this.state.user.level}</h4>
