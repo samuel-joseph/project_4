@@ -120,21 +120,23 @@ class App extends Component {
                 </div>
                 <div className="box2">
                   <div className="box2a">
-                    <h5 className="greetings">
-                      {this.state.greetings}
-                      {/* {this.state.greetings}{" "}
-                      {this.state.currentUser.trainername} */}
-                    </h5>
+                    <h5 className="greetings">{this.state.greetings}</h5>
                   </div>
                   <div className="box2b">
-                  <button>
-                      <Link to="/battle">BATTLE</Link>
+                    <button>
+                      <Link to="/battle">
+                        <button>BATTLE</button>
+                      </Link>
                     </button>
                     <button>
-                      <Link to="/pokedex">POKEDEX</Link>
+                      <Link to="/pokedex">
+                        <button>POKEDEX</button>
+                      </Link>
                     </button>
                     <button>
-                      <Link to="/profile">PROFILE</Link>
+                      <Link to="/profile">
+                        <button>PROFILE</button>
+                      </Link>
                     </button>
                     <button onClick={this.handleLogout}>LOGOUT</button>
                   </div>
@@ -147,16 +149,14 @@ class App extends Component {
                   <Route
                     path="/pokedex"
                     render={() => (
-                      <Pokedex
-                      // greetings={this.changeGreetings()}
-                      />
+                      <Pokedex display={e => this.changeGreetings(e)} />
                     )}
                   />
                   <Route
                     path="/login"
                     render={() => (
                       <LoginForm
-                        // greetings={this.changeGreetings()}
+                        display={e => this.changeGreetings(e)}
                         handleLogin={this.handleLogin}
                       />
                     )}
@@ -165,12 +165,13 @@ class App extends Component {
                     path="/register"
                     render={() => (
                       <RegisterForm
-                        // greetings={this.changeGreetings()}
+                        display={e => this.changeGreetings(e)}
                         handleRegister={this.handleRegister}
                         errorText={this.state.errorText}
                       />
                     )}
                   />
+                  <Route path="/credits" render={() => <Credits />} />
                 </div>
                 <div className="box2">
                   <div className="box2a"></div>
@@ -183,6 +184,9 @@ class App extends Component {
                     </Link>
                     <Link to="/pokedex">
                       <button>Pokedex</button>
+                    </Link>
+                    <Link to="/credits">
+                      <button>Credits</button>
                     </Link>
                   </div>
                 </div>
