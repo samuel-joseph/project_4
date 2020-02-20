@@ -291,7 +291,6 @@ button {
   /* position: absolute; */
 }
 
-
 .white {
   color: white;
 }
@@ -302,6 +301,55 @@ button {
 
 .animate2 {
   position: absolute;
+}
+
+.normal {
+  margin-left: 30%;
+  position: absolute;
+  animation-name: flick;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+}
+
+.beam{
+  width: 10%;
+  position: absolute;
+  margin-left:8%;
+  margin-bottom: 10%;
+}
+.beam2{
+  width: 10%;
+  position: absolute;
+}
+.beam3{
+  width: 10%;
+  margin-top: 5%;
+  position: absolute;
+}
+
+.normal1 {
+  position: absolute;
+  animation-name: flick1;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+}
+
+@keyframes flick {
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes flick1 {
+  25% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes attack {
@@ -325,6 +373,24 @@ button {
 @media (max-width: 600px) {
   body {
     background-color: rgb(120, 0, 211);
+  }
+
+  .normal {
+    width: 20%;
+    margin-left: 55%;
+    position: absolute;
+    animation-name: flick;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+  }
+
+  .normal1 {
+    width: 20%;
+    margin-left: 6%;
+    position: absolute;
+    animation-name: flick;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
   }
 
   .App {

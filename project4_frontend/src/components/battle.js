@@ -26,7 +26,9 @@ class Battle extends Component {
       fainted: false,
       end: false,
       animate: false,
-      animate1: false
+      animate1: false,
+      attack: false,
+      attack1: false
     };
   }
 
@@ -57,12 +59,19 @@ class Battle extends Component {
 
     if (userAttack >= 100) {
       this.setState({ animate: true });
+    } else if (userAttack > 0 && userAttack < 100) {
+      console.log("work!!!");
+      this.setState({ attack: true });
+      console.log(this.state.attack);
     }
 
     if (npcAttack >= 100) {
       this.setState({ animate1: true });
+    } else if (npcAttack > 0 && npcAttack < 100) {
+      this.setState({ attack1: true });
     }
-
+    console.log(this.state.attack);
+    console.log(this.state.attack1)
     this.props.display(
       `${user} pokemon use ${randomUserAttack.name} with ${randomUserAttack.power} damage!
       Rival pokemon use ${randomNpcAttack.name} with ${randomNpcAttack.power} damage!`
@@ -88,7 +97,12 @@ class Battle extends Component {
       );
       setTimeout(
         function() {
-          this.setState({ animate: false, animate1: false });
+          this.setState({
+            animate: false,
+            animate1: false,
+            attack: false,
+            attack1: false
+          });
         }.bind(this),
         1000
       );
@@ -107,7 +121,12 @@ class Battle extends Component {
       );
       setTimeout(
         function() {
-          this.setState({ animate: false, animate1: false });
+          this.setState({
+            animate: false,
+            animate1: false,
+            attack: false,
+            attack1: false
+          });
         }.bind(this),
         1000
       );
@@ -132,9 +151,14 @@ class Battle extends Component {
 
     setTimeout(
       function() {
-        this.setState({ animate: false, animate1: false });
+        this.setState({
+          animate: false,
+          animate1: false,
+          attack: false,
+          attack1: false
+        });
       }.bind(this),
-      1000
+      1500
     );
   };
 
@@ -171,6 +195,12 @@ class Battle extends Component {
                     src="https://cdn.lowgif.com/full/db22157c47f8c158-gif-photos-flame-images-animated-gif-on-gifer-by-starshaper.gif"
                   />
                 )}
+                {this.state.attack && (
+                  <img
+                    className="normal"
+                    src="https://www.freepnglogos.com/uploads/explosion/explosion-clipart-explosion-clip-art-vector-clip-art-online-0.png"
+                  />
+                )}
                 <img className="npcImg" src={this.state.npc.frontimage} />
               </div>
             </div>
@@ -182,6 +212,7 @@ class Battle extends Component {
               FIGHT
             </button>
           )}
+        
           {this.state.end && (
             <button onClick={() => this.gameEnd()} className="fight">
               END
@@ -197,6 +228,12 @@ class Battle extends Component {
                   <img
                     className="animate2"
                     src="https://cdn.lowgif.com/full/db22157c47f8c158-gif-photos-flame-images-animated-gif-on-gifer-by-starshaper.gif"
+                  />
+                )}
+                {this.state.attack1 && (
+                  <img
+                    className="normal1"
+                    src="https://www.freepnglogos.com/uploads/explosion/explosion-clipart-explosion-clip-art-vector-clip-art-online-0.png"
                   />
                 )}
                 <div className="p2stats">
