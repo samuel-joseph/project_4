@@ -14,6 +14,7 @@ import RegisterForm from "./components/RegisterForm";
 import Pokedex from "./components/Pokedex";
 import Welcome from "./components/welcome";
 import Battle from "./components/battle";
+import Credits from "./components/credits";
 
 class App extends Component {
   constructor(props) {
@@ -145,13 +146,14 @@ class App extends Component {
             ) : (
               <div className="box">
                 <div className="box1">
-                  <Welcome />
+                  {/* <Welcome /> */}
                   <Route
                     path="/pokedex"
                     render={() => (
                       <Pokedex display={e => this.changeGreetings(e)} />
                     )}
                   />
+                  <Route path="/credits" render={() => <Credits />} />
                   <Route
                     path="/login"
                     render={() => (
@@ -171,7 +173,6 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="/credits" render={() => <Credits />} />
                 </div>
                 <div className="box2">
                   <div className="box2a"></div>
