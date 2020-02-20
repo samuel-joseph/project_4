@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-// import { loginUser } from '../services/api_helper';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -18,6 +17,10 @@ class LoginForm extends Component {
       [name]: value
     });
   };
+
+  componentDidMount() {
+    this.props.display("Input your trainername and password then press submit")
+  }
 
   render() {
     return (

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class RegisterForm extends Component {
   constructor(props) {
@@ -8,21 +8,25 @@ export default class RegisterForm extends Component {
       name: "",
       trainername: "",
       password: ""
-    }
+    };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
-    })
+    });
+  };
+
+  componentDidMount() {
+    this.props.display("Register and become a trainer!");
   }
 
   render() {
     return (
       <div className="form">
         {this.props.errorText && <p>{this.props.errorText}</p>}
-        <form onSubmit={(e) => this.props.handleRegister(e, this.state)}>
+        <form onSubmit={e => this.props.handleRegister(e, this.state)}>
           <h2>Register!</h2>
           <label htmlFor="name">name</label>
           <input
@@ -48,6 +52,6 @@ export default class RegisterForm extends Component {
           <button>Submit!</button>
         </form>
       </div>
-    )
+    );
   }
 }
