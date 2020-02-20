@@ -256,6 +256,14 @@ button {
   /* position: absolute; */
 }
 
+.welcome {
+  display: flex;
+  justify-content: center;
+  padding-top: 20vh;
+  font-size: 18pt;
+  font-weight: bolder;
+}
+
 .white {
   color: white;
 }
@@ -363,10 +371,9 @@ button {
     width: 100%;
   }
 
-  .box{
+  .box {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
- 
 }

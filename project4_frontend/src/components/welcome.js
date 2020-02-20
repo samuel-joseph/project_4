@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Welcome() {
-  return <div>POKEMON BATTLE!</div>;
+  return (
+    <div className="welcome">
+      <h1>POKEMON BATTLE!</h1>
+    </div>
+  );
 }
