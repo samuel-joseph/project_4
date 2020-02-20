@@ -52,7 +52,7 @@ export default class RegisterForm extends Component {
             value={this.state.password}
             onChange={this.handleChange}
           />
-          <button>Submit!</button>
+          <button className="submit">Submit!</button>
         </form>
       </div>
     );

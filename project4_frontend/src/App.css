@@ -194,7 +194,12 @@ button {
   width: 30vw;
 }
 
-.gamejoe{
+.title {
+  font-family: "Slackey", cursive;
+  font-size: 23pt;
+}
+
+.gamejoe {
   font-style: oblique;
   font-weight: bolder;
 }
@@ -286,13 +291,6 @@ button {
   /* position: absolute; */
 }
 
-.welcome {
-  display: flex;
-  justify-content: center;
-  padding-top: 20vh;
-  font-size: 18pt;
-  font-weight: bolder;
-}
 
 .white {
   color: white;
@@ -324,7 +322,7 @@ button {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   body {
     background-color: rgb(120, 0, 211);
   }
@@ -396,7 +394,7 @@ button {
   }
 
   img {
-    width: 40vw;
+    width: 37vw;
   }
 
   .pokedex {
@@ -427,7 +425,7 @@ button {
 
   .title {
     font-family: "Slackey", cursive;
-    background-color: red;
+    position: absolute;
   }
 
   .pokeball {
@@ -435,11 +433,11 @@ button {
     padding-left: 10vw;
   }
 
-  .gamejoe{
+  .gamejoe {
     font-size: 10pt;
   }
 
-  .label{
+  .label {
     width: 70vw;
   }
 

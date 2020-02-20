@@ -30,7 +30,8 @@ class App extends Component {
       formData: {
         trainername: "",
         password: ""
-      }
+      },
+      isClicked: false
     };
   }
 
@@ -102,7 +103,6 @@ class App extends Component {
             {this.state.currentUser ? (
               <div className="box">
                 <div className="box1">
-                  <Welcome />
                   <Route
                     path="/main"
                     render={() => (

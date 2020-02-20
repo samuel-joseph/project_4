@@ -176,6 +176,18 @@ class Battle extends Component {
             </div>
           )}
         </div>
+        <div className="fightButton">
+          {!this.state.fainted && (
+            <button onClick={() => this.battle()} className="fight">
+              FIGHT
+            </button>
+          )}
+          {this.state.end && (
+            <button onClick={() => this.gameEnd()} className="fight">
+              END
+            </button>
+          )}
+        </div>
         <div className="user">
           {this.state.user && (
             <div>
@@ -199,18 +211,6 @@ class Battle extends Component {
               </div>
             </div>
           )}
-          <div className="fightButton">
-            {!this.state.fainted && (
-              <button onClick={() => this.battle()} className="fight">
-                FIGHT
-              </button>
-            )}
-            {this.state.end && (
-              <button onClick={() => this.gameEnd()} className="fight">
-                END
-              </button>
-            )}
-          </div>
         </div>
       </div>
     );
