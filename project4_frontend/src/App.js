@@ -102,6 +102,7 @@ class App extends Component {
             {this.state.currentUser ? (
               <div className="box">
                 <div className="box1">
+                  <Welcome />
                   <Route
                     path="/main"
                     render={() => (
@@ -126,20 +127,22 @@ class App extends Component {
                   <div className="box2b">
                     <button>
                       <Link to="/battle">
-                        <button>BATTLE</button>
+                        <button className="options">BATTLE</button>
                       </Link>
                     </button>
                     <button>
                       <Link to="/pokedex">
-                        <button>POKEDEX</button>
+                        <button className="options">POKEDEX</button>
                       </Link>
                     </button>
                     <button>
                       <Link to="/profile">
-                        <button>PROFILE</button>
+                        <button className="options">PROFILE</button>
                       </Link>
                     </button>
-                    <button onClick={this.handleLogout}>LOGOUT</button>
+                    <button onClick={this.handleLogout} className="options">
+                      LOGOUT
+                    </button>
                   </div>
                 </div>
               </div>
@@ -194,13 +197,15 @@ class App extends Component {
               </div>
             )}
           </div>
-          <h1 className="white">
-            GAMEJOE <span className="red">C</span>
-            <span className="purple">O</span>
-            <span className="green">L</span>
-            <span className="yellow">O</span>
-            <span className="blue">R</span>
-          </h1>
+          <div className="gamejoe">
+            <h1 className="white">
+              GAME JOE <span className="red">C</span>
+              <span className="purple">O</span>
+              <span className="green">L</span>
+              <span className="yellow">O</span>
+              <span className="blue">R</span>
+            </h1>
+          </div>
         </div>
       </div>
     );

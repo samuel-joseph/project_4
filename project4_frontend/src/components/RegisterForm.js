@@ -32,6 +32,7 @@ export default class RegisterForm extends Component {
           <input
             type="text"
             name="name"
+            className="label"
             value={this.state.name}
             onChange={this.handleChange}
           />
@@ -39,6 +40,7 @@ export default class RegisterForm extends Component {
           <input
             type="text"
             name="trainername"
+            className="label"
             value={this.state.trainername}
             onChange={this.handleChange}
           />
@@ -46,6 +48,7 @@ export default class RegisterForm extends Component {
           <input
             type="password"
             name="password"
+            className="label"
             value={this.state.password}
             onChange={this.handleChange}
           />

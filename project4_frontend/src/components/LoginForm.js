@@ -19,7 +19,7 @@ class LoginForm extends Component {
   };
 
   componentDidMount() {
-    this.props.display("Input your trainername and password then press submit")
+    this.props.display("Input your trainername and password then press submit");
   }
 
   render() {
@@ -29,6 +29,7 @@ class LoginForm extends Component {
           <h2>Login!</h2>
           <label htmlFor="trainername">Trainername</label>
           <input
+            className="label"
             type="text"
             name="trainername"
             value={this.state.trainername}
@@ -36,6 +37,7 @@ class LoginForm extends Component {
           />
           <label htmlFor="password">Password</label>
           <input
+            className="label"
             type="password"
             name="password"
             value={this.state.password}
