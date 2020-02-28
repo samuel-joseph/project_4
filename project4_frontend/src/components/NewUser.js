@@ -98,7 +98,7 @@ class NewUser extends Component {
                 <form onSubmit={this.handleSubmit}>
                   <h5>Name of your Pokemon</h5>
                   <input
-                    onChange={this.handleChange}
+                      onChange={this.handleChange}
                     name="name"
                     type="text"
                     placeholder="name"
